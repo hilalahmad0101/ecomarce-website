@@ -12,15 +12,15 @@ class ManageSiteController extends Controller
 {
     function index(): View
     {
-        $manage_site = new ManageSite();
-        $manage_site->key = "media";
-        $value = [
-            'logo' => '',
-            'favicon' => '',
-            'loader' => '',
-        ];
-        $manage_site->value = json_encode($value);
-        $manage_site->save();
+        // $manage_site = new ManageSite();
+        // $manage_site->key = "media";
+        // $value = [
+        //     'logo' => '',
+        //     'favicon' => '',
+        //     'loader' => '',
+        // ];
+        // $manage_site->value = json_encode($value);
+        // $manage_site->save();
         return view('admin.setting.manage-site');
     }
 
@@ -112,6 +112,142 @@ class ManageSiteController extends Controller
                 'sub_title1' => $request->sub_title1,
                 'sub_title2' => $request->sub_title2,
                 'url1' => $request->url1,
+            ];
+            $manage_site->value = json_encode($value);
+            $manage_site->save();
+        } elseif ($request->type == 'first_three_column') {
+
+            $filename1 = '';
+            if ($request->file('image1')) {
+                $filename1 = $request->file('image1')->store('home_page', 'public');
+            } else {
+                $filename1 = $request->old_image1;
+            }
+
+            $filename2 = '';
+            if ($request->file('image2')) {
+                $filename2 = $request->file('image2')->store('home_page', 'public');
+            } else {
+                $filename2 = $request->old_image2;
+            }
+            $filename3 = '';
+            if ($request->file('image3')) {
+                $filename3 = $request->file('image3')->store('home_page', 'public');
+            } else {
+                $filename3 = $request->old_image3;
+            }
+            $value = [
+                'image1' => $filename1,
+                'image2' => $filename2,
+                'image3' => $filename3,
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'sub_title1' => $request->sub_title1,
+                'sub_title2' => $request->sub_title2,
+                'url1' => $request->url1,
+                'title3' => $request->title3,
+                'sub_title3' => $request->sub_title3,
+                'url3' => $request->url3,
+                'url2' => $request->url2,
+            ];
+            $manage_site->value = json_encode($value);
+            $manage_site->save();
+        } elseif ($request->type == 'second_three_column') {
+
+            $filename1 = '';
+            if ($request->file('image1')) {
+                $filename1 = $request->file('image1')->store('home_page', 'public');
+            } else {
+                $filename1 = $request->old_image1;
+            }
+
+            $filename2 = '';
+            if ($request->file('image2')) {
+                $filename2 = $request->file('image2')->store('home_page', 'public');
+            } else {
+                $filename2 = $request->old_image2;
+            }
+            $filename3 = '';
+            if ($request->file('image3')) {
+                $filename3 = $request->file('image3')->store('home_page', 'public');
+            } else {
+                $filename3 = $request->old_image3;
+            }
+            $value = [
+                'image1' => $filename1,
+                'image2' => $filename2,
+                'image3' => $filename3,
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'sub_title1' => $request->sub_title1,
+                'sub_title2' => $request->sub_title2,
+                'url1' => $request->url1,
+                'title3' => $request->title3,
+                'sub_title3' => $request->sub_title3,
+                'url3' => $request->url3,
+                'url2' => $request->url2,
+            ];
+            $manage_site->value = json_encode($value);
+            $manage_site->save();
+        } elseif ($request->type == 'third_two_column') {
+
+            $filename1 = '';
+            if ($request->file('image1')) {
+                $filename1 = $request->file('image1')->store('home_page', 'public');
+            } else {
+                $filename1 = $request->old_image1;
+            }
+
+            $filename2 = '';
+            if ($request->file('image2')) {
+                $filename2 = $request->file('image2')->store('home_page', 'public');
+            } else {
+                $filename2 = $request->old_image2;
+            }
+            $value = [
+                'image1' => $filename1,
+                'image2' => $filename2,
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'sub_title1' => $request->sub_title1,
+                'sub_title2' => $request->sub_title2,
+                'url1' => $request->url1,
+            ];
+            $manage_site->value = json_encode($value);
+            $manage_site->save();
+        } elseif ($request->type == 'four_three_column') {
+
+            $filename1 = '';
+            if ($request->file('image1')) {
+                $filename1 = $request->file('image1')->store('home_page', 'public');
+            } else {
+                $filename1 = $request->old_image1;
+            }
+
+            $filename2 = '';
+            if ($request->file('image2')) {
+                $filename2 = $request->file('image2')->store('home_page', 'public');
+            } else {
+                $filename2 = $request->old_image2;
+            }
+            $filename3 = '';
+            if ($request->file('image3')) {
+                $filename3 = $request->file('image3')->store('home_page', 'public');
+            } else {
+                $filename3 = $request->old_image3;
+            }
+            $value = [
+                'image1' => $filename1,
+                'image2' => $filename2,
+                'image3' => $filename3,
+                'title1' => $request->title1,
+                'title2' => $request->title2,
+                'sub_title1' => $request->sub_title1,
+                'sub_title2' => $request->sub_title2,
+                'url1' => $request->url1,
+                'title3' => $request->title3,
+                'sub_title3' => $request->sub_title3,
+                'url3' => $request->url3,
                 'url2' => $request->url2,
             ];
             $manage_site->value = json_encode($value);

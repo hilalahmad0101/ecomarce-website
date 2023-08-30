@@ -402,10 +402,10 @@ body_theme1
                                     <li class=""><a
                                             href="{{ route('user.shop') }}">Shop</a></li>
                                     <li class=""><a
-                                            href="https://geniusdevs.com/codecanyon/omnimart40/campaign/products">Category</a>
+                                            href="{{ route('user.category') }}">Category</a>
                                     </li>
                                     <li class=""><a
-                                            href="https://geniusdevs.com/codecanyon/omnimart40/brands">Brand</a></li>
+                                            href="{{ route('user.brand') }}">Brand</a></li>
                                     <li class=""><a
                                             href="https://geniusdevs.com/codecanyon/omnimart40/blog">Blog</a></li>
                                     <li class=""><a

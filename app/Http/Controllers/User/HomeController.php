@@ -157,6 +157,12 @@ class HomeController extends Controller
         return view('user.brand', compact('brands'));
     }
 
+    function category(): View
+    {
+        $categories = Category::latest()->get();
+        return view('user.category', compact('categories'));
+    }
+
     function blog(): View
     {
         $blogs = Blog::latest()->get();

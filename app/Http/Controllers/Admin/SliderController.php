@@ -35,7 +35,7 @@ class SliderController extends Controller
         }
         $slider = new Slider();
         $slider->image = $filename;
-        $slider->link = $request->link;
+        $slider->url = $request->url;
         $slider->title = $request->title;
         $slider->details = $request->details;
         $slider->save();
@@ -63,7 +63,7 @@ class SliderController extends Controller
             $filename = $request->image;
         }
         $slider->image = $filename;
-        $slider->link = $request->link;
+        $slider->url = $request->url;
         $slider->title = $request->title;
         $slider->details = $request->details;
         $slider->save();

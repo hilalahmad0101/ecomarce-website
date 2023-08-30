@@ -34,6 +34,8 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('user.home');
     Route::get('/product-details/{slug}', 'product_details')->name('user.product_details');
     Route::get('/shop', 'shop')->name('user.shop');
+    Route::get('/category', 'category')->name('user.category');
+    Route::get('/brand', 'brands')->name('user.brand');
     Route::get('/shop/category/{id}', 'product_by_category')->name('user.shop.category');
     Route::get('/shop/category/{id}/{cat_id}', 'product_by_sub_category')->name('user.shop.sub.category');
     Route::get('/shop/category/{id}/{cat_id}/{sub_id}', 'product_by_child_category')->name('user.shop.child.category');

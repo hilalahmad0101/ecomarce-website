@@ -12,6 +12,7 @@ use App\Models\Compare;
 use App\Models\Contact;
 use App\Models\Faq;
 use App\Models\FaqCategory;
+use App\Models\ManageSite;
 use App\Models\Product;
 use App\Models\Service;
 use App\Models\Slider;
@@ -35,6 +36,18 @@ class HomeController extends Controller
         $services = Service::limit(4)->latest()->get();
         $blogs = Blog::limit(10)->latest()->get();
         $sliders = Slider::limit(4)->latest()->get();
+
+        $home_page = ManageSite::where('key', 'home_page')->first();
+        $home_page_value = json_decode($home_page->value);
+
+        $first_three_column = ManageSite::where('key', 'first_three_column')->first();
+        $first_three_column_value = json_decode($first_three_column->value);
+
+        $second_three_column = ManageSite::where('key', 'second_three_column')->first();
+        $second_three_column_value = json_decode($second_three_column->value);
+
+        $third_two_column = ManageSite::where('key', 'third_two_column')->first();
+        $third_two_column_value = json_decode($third_two_column->value);
         return view('user.home', compact(
             'categories1',
             'categories2',
@@ -45,6 +58,11 @@ class HomeController extends Controller
             'categories',
             'services',
             'blogs',
+            'home_page_value',
+            'first_three_column_value',
+            'second_three_column_value',
+            'third_two_column_value',
+            'sliders'
         ));
     }
 
@@ -86,13 +104,16 @@ class HomeController extends Controller
             $cart->save();
             return redirect()->back()->with('success', 'Product update successfully');
         } else {
+            $number = str_replace(",", "", $product->current_price);
             Cart::create([
                 'user_id' => auth()->id(),
                 'product_id' => $id,
                 'total' => $product->current_price,
-                'sub_total' => $product->current_price,
+                'sub_total' => $number,
                 'qty' => 1,
             ]);
+
+            Wishlist::whereProductId($id)->delete();
             return redirect()->back()->with('success', 'Product add to cart successfully');
         }
     }
@@ -116,16 +137,25 @@ class HomeController extends Controller
         return view('user.shop', compact('categories', 'products', 'brands'));
     }
 
-    function product_by_category($id): View
+    function search_product(Request $request)
     {
-
+        $category = Category::whereSlug($request->slug)->first();
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
-        $products = Product::where('cat_id', $id)->latest()->get();
+        $products = Product::where('cat_id', $category->id)->where('name', 'LIKE', '%' . $request->search . '%')->latest()->get();
         return view('user.shop', compact('categories', 'products', 'brands'));
     }
 
-    function product_by_sub_category($id,$cat_id): View
+    function product_by_category($slug): View
+    {
+        $category = Category::whereSlug($slug)->first();
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        $products = Product::where('cat_id', $category->id)->latest()->get();
+        return view('user.shop', compact('categories', 'products', 'brands'));
+    }
+
+    function product_by_sub_category($id, $cat_id): View
     {
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -134,7 +164,7 @@ class HomeController extends Controller
     }
 
 
-    function product_by_child_category( $id,$cat_id, $sub_id): View
+    function product_by_child_category($id, $cat_id, $sub_id): View
     {
         $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
@@ -142,13 +172,13 @@ class HomeController extends Controller
         return view('user.shop', compact('categories', 'products', 'brands'));
     }
 
-    function product_by_brand($id): View
+    function product_by_brand($slug): View
     {
-
-        $category = Category::latest()->get();
+        $brand = Brand::whereSlug($slug)->first();
+        $categories = Category::latest()->get();
         $brands = Brand::latest()->get();
-        $products = Product::where('cat_id', $id)->latest()->get();
-        return view('user.shop', compact('category', 'products', 'brands'));
+        $products = Product::where('cat_id', $brand->id)->latest()->get();
+        return view('user.shop', compact('categories', 'products', 'brands'));
     }
 
     function brands(): View

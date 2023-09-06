@@ -12,34 +12,53 @@ class ManageSiteController extends Controller
 {
     function index(): View
     {
-        $manage_site = new ManageSite();
-        $manage_site->key = "footer";
-            $value = [
-                'address' =>'address',
-                'phone' =>'phone',
-                'email' =>'email', 
-                'copyright' =>'copyright',
-                'facebook' =>'facebook',
-                'twitter' =>'twitter',
-                'youtube' =>'youtube',
-                'linkedin' =>'linkedin',
-            ];
-        $manage_site->value = json_encode($value);
-        $manage_site->save();
+        // $manage_site = new ManageSite();
+        // $manage_site->key = "four_three_column";
+        // $value = [
+        //     'image1' => '$filename1',
+        //     'image2' => '$filename2',
+        //     'image3' => '$filename3',
+        //     'title1' => '$request->title1',
+        //     'title2' => '$request->title2',
+        //     'sub_title1' => '$request->sub_title1',
+        //     'sub_title2' => '$request->sub_title2',
+        //     'url1' => '$request->url1',
+        //     'title3' => '$request->title3',
+        //     'sub_title3' => '$request->sub_title3',
+        //     'url3' => '$request->url3',
+        //     'url2' => '$request->url2',
+        // ];
+        // $manage_site->value = json_encode($value);
+        // $manage_site->save();
 
-        $basic_setting=ManageSite::where('key','basic_setting')->first();
-        $home_page_setting=ManageSite::where('key','home_page')->first();
-        $media_setting=ManageSite::where('key','media')->first();
-        $seo_setting=ManageSite::where('key','seo')->first();
-        $footer_setting=ManageSite::where('key','footer')->first();
-       
-        return view('admin.setting.manage-site',compact('basic_setting','home_page_setting','media_setting','seo_setting','footer_setting'));
+        $basic_setting = ManageSite::where('key', 'basic_setting')->first();
+        $home_page_setting = ManageSite::where('key', 'home_page')->first();
+        $media_setting = ManageSite::where('key', 'media')->first();
+        $seo_setting = ManageSite::where('key', 'seo')->first();
+        $first_three_column = ManageSite::where('key', 'first_three_column')->first();
+        $second_three_column = ManageSite::where('key', 'second_three_column')->first();
+        $third_two_column = ManageSite::where('key', 'third_two_column')->first();
+        $four_three_column = ManageSite::where('key', 'four_three_column')->first();
+        $footer_setting = ManageSite::where('key', 'footer')->first();
+
+        return view('admin.setting.manage-site', compact(
+            'basic_setting',
+            'home_page_setting',
+            'media_setting',
+            'seo_setting',
+            'footer_setting',
+            'first_three_column',
+            'second_three_column',
+            'four_three_column',
+            'third_two_column',
+        ));
     }
 
     function update_manage_site(Request $request): RedirectResponse
     {
+        // dd($request->key);
         $manage_site = ManageSite::where('key', $request->key)->first();
-        if ($request->key == 'basic_setting') {
+            if ($request->key == 'basic_setting') {
             $value = [
                 'app_name' => $request->app_name,
                 'home_page_title' => $request->home_page_title,
@@ -90,7 +109,7 @@ class ManageSiteController extends Controller
             $value = [
                 'address' => $request->address,
                 'phone' => $request->phone,
-                'email' => $request->email, 
+                'email' => $request->email,
                 'copyright' => $request->copyright,
                 'facebook' => $request->facebook,
                 'twitter' => $request->twitter,
@@ -127,7 +146,6 @@ class ManageSiteController extends Controller
             $manage_site->value = json_encode($value);
             $manage_site->save();
         } elseif ($request->key == 'first_three_column') {
-
             $filename1 = '';
             if ($request->file('image1')) {
                 $filename1 = $request->file('image1')->store('home_page', 'public');
@@ -223,6 +241,7 @@ class ManageSiteController extends Controller
                 'sub_title1' => $request->sub_title1,
                 'sub_title2' => $request->sub_title2,
                 'url1' => $request->url1,
+                'url2' => $request->url2,
             ];
             $manage_site->value = json_encode($value);
             $manage_site->save();

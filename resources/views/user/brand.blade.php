@@ -20,7 +20,7 @@
         <div class="row g-3">
             @foreach ($brands as $brand)
                 <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-4 col-6">
-                    <a class="b-p-s-b" href="">
+                    <a class="b-p-s-b" href="{{ route('user.brand.product', ['slug' => $brand->slug]) }}">
                         <img class="d-block hi-50" src="{{ asset('storage') }}/{{ $brand->image }}" alt="Adidas"
                             title="Adidas">
                         <h5 style="display: block; margin-left:10px">{{ $brand->name }}</h5>

@@ -6,6 +6,10 @@
     @php
         $basic_value = json_decode($basic_setting->value);
         $home_page_value = json_decode($home_page_setting->value);
+        $first_three_column_value = json_decode($first_three_column->value);
+        $second_three_column_value = json_decode($second_three_column->value);
+        $four_three_column_value = json_decode($four_three_column->value);
+        $third_two_column_value = json_decode($third_two_column->value);
         $media_value = json_decode($media_setting->value);
         $seo_value = json_decode($seo_setting->value);
         $footer_value = json_decode($footer_setting->value);
@@ -49,12 +53,10 @@
                                                     Section Banner</a>
                                                 <a class="nav-link" data-toggle="pill" href="#media">Media</a>
                                                 <a class="nav-link" data-toggle="pill" href="#seo">Seo</a>
-                                                <a class="nav-link" data-toggle="pill" href="#links">Menu</a>
-                                                <a class="nav-link" data-toggle="pill" href="#custom_css"
-                                                    id="newcss">Custom Css</a>
-                                                <a class="nav-link" data-toggle="pill" href="#google_recaptcha">Scripts</a>
-                                                <a class="nav-link" data-toggle="pill" href="#shop">Shop &amp; Checkout
-                                                    Page</a>
+                                                <a class="nav-link" data-toggle="pill" href="#ftc">First Three Column</a> 
+                                                <a class="nav-link" data-toggle="pill" href="#stc">Second Three Column</a> 
+                                                <a class="nav-link" data-toggle="pill" href="#ttc">Thrid Two Column</a> 
+                                                <a class="nav-link" data-toggle="pill" href="#ftc1">Four Three Column</a> 
                                                 <a class="nav-link" data-toggle="pill" href="#footer">Footer &amp; Contact
                                                     Page</a>
                                             </div>
@@ -342,9 +344,7 @@
                                                             </div>
 
                                                         </div>
-
                                                         <div id="seo" class="tab-pane"><br>
-
                                                             <div class="row justify-content-center">
                                                                 <input type="hidden" name="key" id=""
                                                                     value="seo">
@@ -370,104 +370,11 @@
                                                             </div>
 
                                                         </div>
-
-                                                        <div id="custom_css" class="tab-pane">
-                                                            <div class="row justify-content-center">
-                                                                <div class="col-lg-8">
-                                                                    <div class="form-group">
-                                                                        <label>Custom Css *</label>
-                                                                        <textarea name="custom_css" class="form-control" id="custom_css_area" placeholder="Custom Css"></textarea>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-
-                                                        <div id="links" class="tab-pane"><br>
-
-                                                            <div class="row justify-content-center">
-
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_shop" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Shop</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_blog" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Blog</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_campaign" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display
-                                                                                Campaign</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_brands" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Brand</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_faq" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Faq</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-lg-6 offset-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_contact" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display
-                                                                                Contact</span>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
                                                         <div id="footer" class="tab-pane"><br>
-                                                            <input type="hidden" name="key" value="footer"
-                                                                id="">
                                                             <div class="row justify-content-center">
                                                                 <div class="col-lg-8">
-
+                                                                    <input type="hidden" name="key" value="footer"
+                                                                        id="">
                                                                     <div class="tab-content">
 
                                                                         <div id="footer_basic"
@@ -480,9 +387,9 @@
                                                                                         <label for="footer_address">Store
                                                                                             Address *</label>
                                                                                         <input type="text"
-                                                                                            name="footer_address"
+                                                                                            name="address"
                                                                                             class="form-control"
-                                                                                            id="footer_address"
+                                                                                            id="address"
                                                                                             placeholder="Store Address"
                                                                                             value="{{ $footer_value->address }}">
                                                                                     </div>
@@ -517,7 +424,7 @@
                                                                                             class="form-control"
                                                                                             id="facebook"
                                                                                             placeholder="Facebook Link"
-                                                                                            value="{{ $footer_value->face }}">
+                                                                                            value="{{ $footer_value->facebook }}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="email">Store
@@ -527,7 +434,7 @@
                                                                                             class="form-control"
                                                                                             id="twitter"
                                                                                             placeholder="Twitter Link"
-                                                                                            value="demoemail123@gmail.com">
+                                                                                            value="{{ $footer_value->twitter }}">
                                                                                     </div>
 
                                                                                     <div class="form-group">
@@ -538,7 +445,7 @@
                                                                                             class="form-control"
                                                                                             id="youtube"
                                                                                             placeholder="Youtube Link"
-                                                                                            value="demoemail123@gmail.com">
+                                                                                            value="{{ $footer_value->youtube }}">
                                                                                     </div>
                                                                                     <div class="form-group">
                                                                                         <label for="email">Store
@@ -548,13 +455,13 @@
                                                                                             class="form-control"
                                                                                             id="linkedin"
                                                                                             placeholder="LinkeDin Link"
-                                                                                            value="demoemail123@gmail.com">
+                                                                                            value="{{ $footer_value->linkedin }}">
                                                                                     </div>
 
                                                                                     <div class="form-group">
                                                                                         <label for="copy_right">Copyright
                                                                                             *</label>
-                                                                                        <textarea name="copyright" id="copyright" class="form-control" rows="3" placeholder="Copyright">OmniMart © All rights reserved.</textarea>
+                                                                                        <textarea name="copyright" id="copyright" class="form-control" rows="3" placeholder="Copyright">{{ $footer_value->copyright }}</textarea>
                                                                                     </div>
 
 
@@ -570,272 +477,469 @@
                                                             </div>
 
                                                         </div>
-
-
-                                                        <div id="google_recaptcha" class="tab-pane"><br>
-                                                            <div class="row justify-content-center">
-
-                                                                <div class="col-lg-8">
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_google_analytics" value="1">
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Google
-                                                                                Analytics</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Google Analytics *</label>
-                                                                        <textarea name="google_analytics" class="form-control" id="" placeholder="Google Analytics"></textarea>
-                                                                    </div>
-
-                                                                    <hr>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_google_adsense" value="1">
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Google Adsense
-                                                                                Code</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Google Adsense Code *</label>
-                                                                        <textarea name="google_adsense" class="form-control" id="" placeholder="Google Adsense Code"></textarea>
-                                                                    </div>
-
-
-                                                                    <hr>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="recaptcha" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Google
-                                                                                Recaptcha</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="google_recaptcha_site_key">Google
-                                                                            Rechaptcha Site Key *</label>
-                                                                        <input type="text"
-                                                                            name="google_recaptcha_site_key"
-                                                                            class="form-control"
-                                                                            id="google_recaptcha_site_key"
-                                                                            placeholder="Google Rechaptcha Site Key"
-                                                                            value="6LcnPoEaAAAAAF6QhKPZ8V4744yiEnr41li3SYDn">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="google_recaptcha_secret_key">Google
-                                                                            Rechaptcha Secret Key</label>
-                                                                        <input type="text"
-                                                                            name="google_recaptcha_secret_key"
-                                                                            class="form-control"
-                                                                            id="google_recaptcha_secret_key"
-                                                                            placeholder="Google Rechaptcha Secret Key"
-                                                                            value="6LcnPoEaAAAAACV_xC4jdPqumaYKBnxz9Sj6y0zk">
-                                                                    </div>
-
-
-                                                                    <hr>
-
-
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_facebook_pixel" value="1">
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Facebook
-                                                                                Pixel</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Facebook Pixel *</label>
-                                                                        <textarea name="facebook_pixel" class="form-control" id="" placeholder="Facebook Pixel"></textarea>
-                                                                    </div>
-
-
-                                                                    <hr>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_facebook_messenger"
-                                                                                value="1">
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Facebook
-                                                                                Messenger</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Facebook Messenger *</label>
-                                                                        <textarea name="facebook_messenger" class="form-control" id="" placeholder="Facebook Messenger">&lt;!-- Messenger Chat Plugin Code --&gt;
-&lt;div id=&quot;fb-root&quot;&gt;&lt;/div&gt;
-
-&lt;!-- Your Chat Plugin code --&gt;
-&lt;div id=&quot;fb-customer-chat&quot; class=&quot;fb-customerchat&quot;&gt;
-&lt;/div&gt;
-
-&lt;script&gt;
-  var chatbox = document.getElementById(&#039;fb-customer-chat&#039;);
-  chatbox.setAttribute(&quot;page_id&quot;, &quot;858401617860382&quot;);
-  chatbox.setAttribute(&quot;attribution&quot;, &quot;biz_inbox&quot;);
-  window.fbAsyncInit = function() {
-    FB.init({
-      xfbml            : true,
-      version          : &#039;v11.0&#039;
-    });
-  };
-
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = &#039;https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js&#039;;
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, &#039;script&#039;, &#039;facebook-jssdk&#039;));
-&lt;/script&gt;</textarea>
-                                                                    </div>
-
-
-                                                                    <hr>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_disqus" value="1" checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Display Disqus</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label>Disqus Script *</label>
-                                                                        <textarea name="disqus" class="form-control" id="" placeholder="Disqus Script">&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
-&lt;script&gt;
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
-/*
-var disqus_config = function () {
-this.page.url = PAGE_URL;  // Replace PAGE_URL with your page&#039;s canonical URL variable
-this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page&#039;s unique identifier variable
-};
-*/
-(function() { // DON&#039;T EDIT BELOW THIS LINE
-var d = document, s = d.createElement(&#039;script&#039;);
-s.src = &#039;https://omnimart.disqus.com/embed.js&#039;;
-s.setAttribute(&#039;data-timestamp&#039;, +new Date());
-(d.head || d.body).appendChild(s);
-})();
-&lt;/script&gt;</textarea>
-                                                                    </div>
-
-                                                                </div>
-
+                                                        <div id="ftc" class="tab-pane"><br>
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="key" value="first_three_column"
+                                                                    id="">
+                                                                <label for="name">Image 1 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $first_three_column_value->image1 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
                                                             </div>
-                                                        </div>
-
-
-
-                                                        <div id="shop" class="tab-pane"><br>
-                                                            <div class="row justify-content-center">
-
-                                                                <div class="col-lg-8">
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_attribute_search" value="1"
-                                                                                checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Filter By
-                                                                                Attribute &amp; Attribute Options</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_range_search" value="1"
-                                                                                checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Filter By
-                                                                                Price Range</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="view_product">View Product *</label>
-                                                                        <input type="text" name="view_product"
-                                                                            class="form-control" id="view_product"
-                                                                            placeholder="View Product" value="16">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="max_price">Price Range Max *</label>
-                                                                        <input type="text" name="max_price"
-                                                                            class="form-control" id="max_price"
-                                                                            placeholder="Price Range Max" value="10000">
-                                                                    </div>
-
-                                                                    <hr>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_guest_checkout" value="1"
-                                                                                checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Guest
-                                                                                Checkout</span>
-                                                                        </label>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label class="switch-primary">
-                                                                            <input type="checkbox"
-                                                                                class="switch switch-bootstrap status"
-                                                                                name="is_privacy_trams" value="1"
-                                                                                checked>
-                                                                            <span class="switch-body"></span>
-                                                                            <span class="switch-text">Enable Privacy &amp;
-                                                                                Terms Conditions</span>
-                                                                        </label>
-                                                                    </div>
-
-                                                                    <div class="form-group">
-                                                                        <label for="policy_link">Privacy Policy Link
-                                                                            *</label>
-                                                                        <input type="text" name="policy_link"
-                                                                            class="form-control" id="policy_link"
-                                                                            placeholder="Privacy Policy"
-                                                                            value="http://localhost/my/omnimart3/privacy-policy">
-                                                                    </div>
-                                                                    <div class="form-group">
-                                                                        <label for="terms_link">Terms of Service Link
-                                                                            *</label>
-                                                                        <input type="text" name="terms_link"
-                                                                            class="form-control" id="terms_link"
-                                                                            placeholder="Terms of Service"
-                                                                            value="http://localhost/my/omnimart3/terms-and-service">
-                                                                    </div>
-                                                                </div>
-
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image1"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
                                                             </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title1" class="form-control"
+                                                                    id="title1" placeholder="Enter Title"
+                                                                    value="{{ $first_three_column_value->title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title1"
+                                                                    class="form-control" id="sub_title1"
+                                                                    placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 1 *</label>
+                                                                <input type="text" name="url1" class="form-control"
+                                                                    id="url1" placeholder="Enter Url"
+                                                                    value="{{ $first_three_column_value->url1 }}">
+                                                            </div>
+
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 2 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $first_three_column_value->image2 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image2"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title2" class="form-control"
+                                                                    id="title2" placeholder="Enter Title"
+                                                                    value="{{ $first_three_column_value->title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title2"
+                                                                    class="form-control" id="sub_title2"
+                                                                    placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url2" class="form-control"
+                                                                    id="url2" placeholder="Enter Url"
+                                                                    value="{{ $first_three_column_value->url2 }}">
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 3 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $first_three_column_value->image3 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image3"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title3" class="form-control"
+                                                                    id="title3" placeholder="Enter Title"
+                                                                    value="{{ $first_three_column_value->title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title3"
+                                                                    class="form-control" id="sub_title3"
+                                                                    placeholder="Enter Subtitle"value="{{ $first_three_column_value->sub_title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url3" class="form-control"
+                                                                    id="url3" placeholder="Enter Url"
+                                                                    value="{{ $first_three_column_value->url3 }}">
+                                                            </div>
+
+                                                            <input type="hidden" name="old_image1"
+                                                                value="{{ $first_three_column_value->image1 }}" id="">
+                                                            <input type="hidden" name="old_image2"
+                                                                value="{{ $first_three_column_value->image2 }}" id="">
+                                                                <input type="hidden" name="old_image3"
+                                                                value="{{ $first_three_column_value->image2 }}" id="">
                                                         </div>
+                                                        <div id="stc" class="tab-pane"><br>
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="key" value="second_three_column"
+                                                                    id="">
+                                                                <label for="name">Image 1 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $second_three_column_value->image1 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image1"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
 
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title1" class="form-control"
+                                                                    id="title1" placeholder="Enter Title"
+                                                                    value="{{ $second_three_column_value->title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title1"
+                                                                    class="form-control" id="sub_title1"
+                                                                    placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 1 *</label>
+                                                                <input type="text" name="url1" class="form-control"
+                                                                    id="url1" placeholder="Enter Url"
+                                                                    value="{{ $second_three_column_value->url1 }}">
+                                                            </div>
 
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 2 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $second_three_column_value->image2 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image2"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
 
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title2" class="form-control"
+                                                                    id="title2" placeholder="Enter Title"
+                                                                    value="{{ $second_three_column_value->title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title2"
+                                                                    class="form-control" id="sub_title2"
+                                                                    placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url2" class="form-control"
+                                                                    id="url2" placeholder="Enter Url"
+                                                                    value="{{ $second_three_column_value->url2 }}">
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 3 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $second_three_column_value->image3 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image3"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title3" class="form-control"
+                                                                    id="title3" placeholder="Enter Title"
+                                                                    value="{{ $second_three_column_value->title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title3"
+                                                                    class="form-control" id="sub_title3"
+                                                                    placeholder="Enter Subtitle"value="{{ $second_three_column_value->sub_title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url3" class="form-control"
+                                                                    id="url3" placeholder="Enter Url"
+                                                                    value="{{ $second_three_column_value->url3 }}">
+                                                            </div>
+
+                                                            <input type="hidden" name="old_image1"
+                                                                value="{{ $second_three_column_value->image1 }}" id="">
+                                                            <input type="hidden" name="old_image2"
+                                                                value="{{ $second_three_column_value->image2 }}" id="">
+                                                                <input type="hidden" name="old_image3"
+                                                                value="{{ $second_three_column_value->image2 }}" id="">
+                                                        </div>
+ 
+                                                        <div id="ftc1" class="tab-pane"><br>
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="key" value="four_three_column"
+                                                                    id="">
+                                                                <label for="name">Image 1 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $four_three_column_value->image1 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image1"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title1" class="form-control"
+                                                                    id="title1" placeholder="Enter Title"
+                                                                    value="{{ $four_three_column_value->title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title1"
+                                                                    class="form-control" id="sub_title1"
+                                                                    placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 1 *</label>
+                                                                <input type="text" name="url1" class="form-control"
+                                                                    id="url1" placeholder="Enter Url"
+                                                                    value="{{ $four_three_column_value->url1 }}">
+                                                            </div>
+
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 2 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $four_three_column_value->image2 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image2"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title2" class="form-control"
+                                                                    id="title2" placeholder="Enter Title"
+                                                                    value="{{ $four_three_column_value->title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title2"
+                                                                    class="form-control" id="sub_title2"
+                                                                    placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url2" class="form-control"
+                                                                    id="url2" placeholder="Enter Url"
+                                                                    value="{{ $four_three_column_value->url2 }}">
+                                                            </div>
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 3 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $four_three_column_value->image3 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image3"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title3" class="form-control"
+                                                                    id="title3" placeholder="Enter Title"
+                                                                    value="{{ $four_three_column_value->title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title3"
+                                                                    class="form-control" id="sub_title3"
+                                                                    placeholder="Enter Subtitle"value="{{ $four_three_column_value->sub_title3 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 3 *</label>
+                                                                <input type="text" name="url3" class="form-control"
+                                                                    id="url3" placeholder="Enter Url"
+                                                                    value="{{ $four_three_column_value->url3 }}">
+                                                            </div>
+
+                                                            <input type="hidden" name="old_image1"
+                                                                value="{{ $four_three_column_value->image1 }}" id="">
+                                                            <input type="hidden" name="old_image2"
+                                                                value="{{ $four_three_column_value->image2 }}" id="">
+                                                                <input type="hidden" name="old_image3"
+                                                                value="{{ $four_three_column_value->image2 }}" id="">
+                                                        </div>
+                                                        <div id="ttc" class="tab-pane"><br>
+                                                            <div class="form-group">
+                                                                <input type="hidden" name="key" value="third_two_column"
+                                                                    id="">
+                                                                <label for="name">Image 1 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $third_two_column_value->image1 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image1"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title1" class="form-control"
+                                                                    id="title1" placeholder="Enter Title"
+                                                                    value="{{ $third_two_column_value->title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title1"
+                                                                    class="form-control" id="sub_title1"
+                                                                    placeholder="Enter Subtitle"value="{{ $third_two_column_value->sub_title1 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 1 *</label>
+                                                                <input type="text" name="url1" class="form-control"
+                                                                    id="url1" placeholder="Enter Url"
+                                                                    value="{{ $third_two_column_value->url1 }}">
+                                                            </div>
+
+                                                            <hr>
+                                                            <div class="form-group">
+                                                                <label for="name">Image 2 *</label>
+                                                                <br>
+                                                                <img class="admin-img"
+                                                                    src="{{ asset('storage') }}/{{ $third_two_column_value->image2 }}"
+                                                                    alt="No Image Found">
+                                                                <br>
+                                                                <span class="mt-1">Image Size Should Be 496 x 204.</span>
+                                                            </div>
+                                                            <div class="form-group position-relative">
+                                                                <label class="file">
+                                                                    <input type="file" accept="image/*"
+                                                                        class="upload-photo" name="image2"
+                                                                        id="file" aria-label="File browser example">
+                                                                    <span class="file-custom text-left">Upload
+                                                                        Image...</span>
+                                                                </label>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="title1">Title *</label>
+                                                                <input type="text" name="title2" class="form-control"
+                                                                    id="title2" placeholder="Enter Title"
+                                                                    value="{{ $third_two_column_value->title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="subtitle1">Subtitle </label>
+                                                                <input type="text" name="sub_title2"
+                                                                    class="form-control" id="sub_title2"
+                                                                    placeholder="Enter Subtitle"value="{{ $third_two_column_value->sub_title2 }}">
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <label for="url1">URL 2 *</label>
+                                                                <input type="text" name="url2" class="form-control"
+                                                                    id="url2" placeholder="Enter Url"
+                                                                    value="{{ $third_two_column_value->url2 }}">
+                                                            </div>
+
+                                                            <input type="hidden" name="old_image1"
+                                                                value="{{ $third_two_column_value->image1 }}" id="">
+                                                            <input type="hidden" name="old_image2"
+                                                                value="{{ $third_two_column_value->image2 }}" id="">
+                                                        </div>
+ 
+                                                     
                                                     </div>
                                                 </div>
                                             </div>

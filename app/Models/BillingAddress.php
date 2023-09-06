@@ -16,5 +16,6 @@ class BillingAddress extends Model
         'zip_code',
         'city',
         'company',
+        'phone'
     ];
 }

@@ -102,31 +102,32 @@ body_theme1
                                         alt="OmniMart"></a></div>
                             <!-- Search / Categories-->
                             <div class="search-box-wrap d-none d-lg-block d-flex">
-                                <div class="search-box-inner align-self-center">
-                                    <div class="search-box d-flex">
-                                        <select name="category" id="category_select" class="categoris">
-                                            <option value="">All</option>
-                                            @php
-                                                $categories = \App\Models\Category::latest()->get();
-                                            @endphp
-                                            @foreach ($categories as $category)
-                                                <option value="{{ $category->slug }}">{{ $category->name }}</option>
-                                            @endforeach
-                                        </select>
-                                        <form class="input-group" id="header_search_form" action="" method="get">
-                                            <input type="hidden" name="category" value="" id="search__category">
+                                <form class="input-group" id="" action="{{ route('user.search.product') }}"
+                                    method="get">
+                                    <div class="search-box-inner align-self-center">
+                                        <div class="search-box d-flex">
+                                            <select name="slug" id="" class="categoris">
+                                                <option value="">All</option>
+                                                @php
+                                                    $categories = \App\Models\Category::latest()->get();
+                                                @endphp
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->slug }}">{{ $category->name }}
+                                                    </option>
+                                                @endforeach
+                                            </select>
                                             <span class="input-group-btn">
                                                 <button type="submit"><i class="icon-search"></i></button>
                                             </span>
                                             <input class="form-control" type="text"
                                                 data-target="https://geniusdevs.com/codecanyon/omnimart40/search/suggest"
-                                                id="__product__search" name="search"
+                                                id="" name="search"
                                                 placeholder="Search by product name">
                                             <div class="serch-result d-none">
                                             </div>
-                                        </form>
+                                        </div>
                                     </div>
-                                </div>
+                                </form>
                                 <span class="d-block d-lg-none close-m-serch"><i class="icon-x"></i></span>
                             </div>
                             <!-- Toolbar-->
@@ -149,7 +150,7 @@ body_theme1
                                                 class="text-label">Compare</span></div>
                                     </a>
                                 </div>
-                                <div class="toolbar-item hidden-on-mobile"><a href="">
+                                <div class="toolbar-item hidden-on-mobile"><a href="{{ route('user.wishlist') }}">
                                         <div>
                                             <span class="compare-icon"><i class="icon-heart"></i><span
                                                     class="count-label cart_count">{{ \App\Models\Wishlist::where('user_id', auth()->id())->count() }}
@@ -163,49 +164,52 @@ body_theme1
                                                 </span></span><span class="text-label">Cart</span></div>
                                     </a>
                                     @php
-                                        $carts=\App\Models\Cart::where('user_id', auth()->id())->latest()->get();
-                                        $sub_total=\App\Models\Cart::where('user_id', auth()->id())->sum('sub_total');
-
+                                        $carts = \App\Models\Cart::where('user_id', auth()->id())
+                                            ->latest()
+                                            ->get();
+                                        $sub_total = \App\Models\Cart::where('user_id', auth()->id())->sum('sub_total');
+                                        
                                     @endphp
                                     <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header"
                                         id="header_cart_load"
                                         data-target="https://geniusdevs.com/codecanyon/omnimart40/header/cart/load">
                                         @forelse ($carts as $cart)
-                                        <div class="entry">
-                                            <div class="entry-thumb"><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM"><img
-                                                        src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634134938Hcb62dec2d6a241fc90ce2bb04059684em.jpg"
-                                                        alt="Product"></a></div>
-                                            <div class="entry-content">
-                                                <h4 class="entry-title"><a
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM">
-                                                       {{ $cart->product->name }}
-                                                    </a></h4>
-                                                <span class="entry-meta">{{ $cart->qty }} x ${{ $cart->sub_total }}</span>
+                                            <div class="entry">
+                                                <div class="entry-thumb"><a
+                                                        href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM"><img
+                                                            src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634134938Hcb62dec2d6a241fc90ce2bb04059684em.jpg"
+                                                            alt="Product"></a></div>
+                                                <div class="entry-content">
+                                                    <h4 class="entry-title"><a
+                                                            href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM">
+                                                            {{ $cart->product->name }}
+                                                        </a></h4>
+                                                    <span class="entry-meta">{{ $cart->qty }} x
+                                                        ${{ $cart->sub_total }}</span>
 
+                                                </div>
+                                                <div class="entry-delete"><a
+                                                        href="https://geniusdevs.com/codecanyon/omnimart40/cart/destroy/540-"><i
+                                                            class="icon-x"></i></a></div>
                                             </div>
-                                            <div class="entry-delete"><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/cart/destroy/540-"><i
-                                                        class="icon-x"></i></a></div>
-                                        </div>
+                                            
+                                           
+                                        @empty
+                                            Cart empty
+                                        @endforelse
                                         <div class="text-right">
                                             <p class="text-gray-dark py-2 mb-0"><span
                                                     class="text-muted">Subtotal:</span> ${{ $sub_total }}</p>
                                         </div>
                                         <div class="d-flex justify-content-between">
                                             <div class="w-50 d-block"><a class="btn btn-primary btn-sm  mb-0"
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/cart"><span>Cart</span></a>
+                                                    href="{{ route('user.cart') }}"><span>Cart</span></a>
                                             </div>
-                                            <div class="w-50 d-block text-end"><a class="btn btn-primary btn-sm  mb-0"
+                                            <div class="w-50 d-block text-end"><a
+                                                    class="btn btn-primary btn-sm  mb-0"
                                                     href="https://geniusdevs.com/codecanyon/omnimart40/checkout/billing/address"><span>Checkout</span></a>
                                             </div>
                                         </div>
-                                        @empty
-                                        Cart empty
-                                        @endforelse
-                                      
-                                        
-
 
                                     </div>
                                     {{-- <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header"
@@ -245,11 +249,9 @@ body_theme1
                                     aria-labelledby="mmenu-tab">
                                     <nav class="slideable-menu">
                                         <ul>
-                                            <li class="active"><a
-                                                    href="/"><i
+                                            <li class="active"><a href="/"><i
                                                         class="icon-chevron-right"></i>Home</a></li>
-                                            <li class=""><a
-                                                    href="{{ route('user.shop') }}"><i
+                                            <li class=""><a href="{{ route('user.shop') }}"><i
                                                         class="icon-chevron-right"></i>Shop</a></li>
                                             <li class=""><a
                                                     href="https://geniusdevs.com/codecanyon/omnimart40/campaign/products"><i
@@ -396,16 +398,12 @@ body_theme1
                             <nav class="site-menu">
                                 <ul>
                                     <li class="t-h-dropdown  active">
-                                        <a class="main-link"
-                                            href="/">Home</a>
+                                        <a class="main-link" href="/">Home</a>
                                     </li>
-                                    <li class=""><a
-                                            href="{{ route('user.shop') }}">Shop</a></li>
-                                    <li class=""><a
-                                            href="{{ route('user.category') }}">Category</a>
+                                    <li class=""><a href="{{ route('user.shop') }}">Shop</a></li>
+                                    <li class=""><a href="{{ route('user.category') }}">Category</a>
                                     </li>
-                                    <li class=""><a
-                                            href="{{ route('user.brand') }}">Brand</a></li>
+                                    <li class=""><a href="{{ route('user.brand') }}">Brand</a></li>
                                     <li class=""><a
                                             href="https://geniusdevs.com/codecanyon/omnimart40/blog">Blog</a></li>
                                     <li class=""><a

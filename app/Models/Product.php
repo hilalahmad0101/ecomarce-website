@@ -47,7 +47,12 @@ class Product extends Model
         return $this->belongsTo(Brand::class, 'brand_id');
     }
 
-    function carts() : HasMany {
-        return $this->hasMany(Cart::class,'product_id');
+    function carts(): HasMany
+    {
+        return $this->hasMany(Cart::class, 'product_id');
+    }
+    function wishlists(): HasMany
+    {
+        return $this->hasMany(Wishlist::class, 'product_id');
     }
 }

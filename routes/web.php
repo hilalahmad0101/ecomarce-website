@@ -2,7 +2,10 @@
 
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\Auth\RegisterController;
+use App\Http\Controllers\User\CartController;
+use App\Http\Controllers\User\CheckoutController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\WishListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,19 +37,36 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('user.home');
     Route::get('/product-details/{slug}', 'product_details')->name('user.product_details');
     Route::get('/shop', 'shop')->name('user.shop');
+    Route::get('/price/product', 'product_by_price')->name('user.product.price');
     Route::get('/category', 'category')->name('user.category');
+    Route::get('/search', 'search_product')->name('user.search.product');
+    Route::get('/category/product/{slug}', 'product_by_category')->name('user.category.product');
+    Route::get('/brand/product/{slug}', 'product_by_brand')->name('user.brand.product');
     Route::get('/brand', 'brands')->name('user.brand');
     Route::get('/shop/category/{id}', 'product_by_category')->name('user.shop.category');
     Route::get('/shop/category/{id}/{cat_id}', 'product_by_sub_category')->name('user.shop.sub.category');
     Route::get('/shop/category/{id}/{cat_id}/{sub_id}', 'product_by_child_category')->name('user.shop.child.category');
     Route::middleware(['auth'])->group(function () {
         Route::get('/add_to_wishlist/{id}', 'add_to_wishlist')->name('user.add_to_wishlist');
-        Route::get('/add_to_wishlist/{id}', 'add_to_wishlist')->name('user.add_to_wishlist');
-        Route::get('/add_to_wishlist/{id}', 'add_to_wishlist')->name('user.add_to_wishlist');
         Route::get('/add_to_compare/{id}', 'add_to_compare')->name('user.add_to_compare');
         Route::get('/add_to_cart/{id}', 'add_to_cart')->name('user.add_to_cart');
     });
 });
-
+Route::middleware(['auth'])->group(function () {
+    Route::controller(CartController::class)->group(function () {
+        Route::get('/cart', 'index')->name('user.cart');
+        Route::get('/cart/clear', 'clearCart')->name('user.cart.clear');
+        Route::post('/cart/update', 'update_cart')->name('user.cart.update');
+        Route::get('/cart/remove/{id}', 'removeCartItem')->name('user.cart.remove');
+    });
+    Route::controller(WishListController::class)->group(function () {
+        Route::get('/wishlist', 'index')->name('user.wishlist');
+        Route::get('/wishlist/clear', 'clear_wishlist')->name('user.wishlist.clear');
+        Route::get('/wishlist/remove/{id}', 'remove_wishlist')->name('user.wishlist.remove');
+    });
+    Route::controller(CheckoutController::class)->group(function () {
+        Route::get('/checkout', 'index')->name('user.checkout');
+    });
+});
 
 require_once 'admin.php';

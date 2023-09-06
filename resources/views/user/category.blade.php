@@ -20,7 +20,7 @@
         <div class="row g-3">
             @foreach ($categories as $category)
                 <div class="col-xxl-2 col-xl-3 col-lg-4 col-md-4 col-6">
-                    <a class="b-p-s-b" href="">
+                    <a class="b-p-s-b" href="{{ route('user.category.product', ['slug' => $category->slug]) }}">
                         <img class="d-block hi-50" src="{{ asset('storage') }}/{{ $category->image }}" alt="Adidas"
                             title="Adidas">
                         <h5 style="display: block; margin-left:10px">{{ $category->name }}</h5>

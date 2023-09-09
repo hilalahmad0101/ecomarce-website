@@ -66,6 +66,10 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::controller(CheckoutController::class)->group(function () {
         Route::get('/checkout', 'index')->name('user.checkout');
+        Route::post('/billing/address', 'update_billing_address')->name('user.billing_address');
+        Route::get('/payment', 'payment')->name('user.payment');
+        Route::get('/order', 'order')->name('user.order');
+        Route::post('/checkout/cash-on-delivery', 'checkout_submit_cash_on_delivery')->name('user.checkout.cash.on.delivery');
     });
 });
 

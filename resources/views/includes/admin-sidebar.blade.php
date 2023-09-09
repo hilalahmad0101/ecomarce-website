@@ -94,7 +94,7 @@
                     <div class="collapse" id="order">
                         <ul class="nav nav-collapse">
                             <li class="">
-                                <a class="sub-link" href="https://geniusdevs.com/codecanyon/omnimart40/admin/orders">
+                                <a class="sub-link" href="{{ route('admin.all.order') }}">
                                     <span class="sub-item">All Orders</span>
                                 </a>
                             </li>

@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqController;
+use App\Http\Controllers\Admin\ManageController;
 use App\Http\Controllers\Admin\ManageSiteController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ServiceController;
@@ -151,6 +152,10 @@ Route::prefix('admin')->group(function () {
         Route::controller(ManageSiteController::class)->group(function () {
             Route::get('/manage-site/index', 'index')->name('admin.manage-site.index');
             Route::post('/manage-site/store', 'update_manage_site')->name('admin.manage-site.store');
+        });
+
+        Route::controller(ManageController::class)->group(function(){
+            Route::get('/all-order','index')->name('admin.all.order');
         });
     });
 });

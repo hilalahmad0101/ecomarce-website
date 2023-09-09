@@ -20,7 +20,7 @@
             <a class="list-group-item " href="https://geniusdevs.com/codecanyon/omnimart40/user/ticket"><i
                     class="icon-file-text"></i>Support Ticket</a>
             <a class="list-group-item with-badge "
-                href="https://geniusdevs.com/codecanyon/omnimart40/user/orders"><i
+                href="{{ route('user.order') }}"><i
                     class="icon-shopping-bag"></i>Orders<span
                     class="badge badge-default badge-pill">21</span></a>
             <a class="list-group-item " href="https://geniusdevs.com/codecanyon/omnimart40/user/addresses"><i

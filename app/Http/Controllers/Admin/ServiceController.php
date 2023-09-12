@@ -49,7 +49,7 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required',
             'details' => 'required',
-            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
+            'image' => '',
         ]);
         $service = Service::findOrFail($id);
         $filename = '';

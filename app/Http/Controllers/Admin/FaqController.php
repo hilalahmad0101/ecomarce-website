@@ -33,9 +33,9 @@ class FaqController extends Controller
     }
     function edit($id): View
     {
-        $faq_category = Faq::findOrFail($id);
+        $faq = Faq::findOrFail($id);
         $faq_categories=FaqCategory::latest()->get();
-        return view('admin.faq.update', compact('faq_category','faq_categories'));
+        return view('admin.faq.update', compact('faq','faq_categories'));
     }
     function update(Request $request, $id): RedirectResponse
     {

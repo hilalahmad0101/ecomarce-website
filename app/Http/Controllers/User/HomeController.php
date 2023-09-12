@@ -212,7 +212,15 @@ class HomeController extends Controller
 
     function blog_details($id): View
     {
-        $blogs = Blog::findOrFail($id);
+        $blog = Blog::findOrFail($id);
+        $recent_blogs = Blog::limit(4)->latest()->get();
+        $categories = BlogCategory::latest()->get();
+        return view('user.blog-details', compact('blog', 'categories', 'recent_blogs'));
+    }
+
+    function blog_search(Request $request): View
+    {
+        $blogs = Blog::where('title', 'LIKE', '%' . $request->search . '%')->orWhere('title', 'LIKE', '%' . $request->search . '%')->latest()->get();
         $recent_blogs = Blog::limit(4)->latest()->get();
         $categories = BlogCategory::latest()->get();
         return view('user.blog', compact('blogs', 'categories', 'recent_blogs'));
@@ -228,7 +236,8 @@ class HomeController extends Controller
     function faq_by_category($id): View
     {
         $faqs = Faq::where('cat_id', $id)->latest()->get();
-        return view('user.faqs', compact('faqs'));
+        $faq  = FaqCategory::findOrFail($id);
+        return view('user.faqs', compact('faqs','faq'));
     }
 
     function subscribe(Request $request): RedirectResponse

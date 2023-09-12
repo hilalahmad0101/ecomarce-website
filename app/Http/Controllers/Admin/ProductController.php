@@ -34,7 +34,6 @@ class ProductController extends Controller
             'name' => 'required|unique:products',
             'slug' => 'required|unique:products',
             'featured_image' => 'required|image|mimes:jpg,png,jpeg|max:2096',
-            'gallery' => 'required',
             'short_description' => 'required',
             'description' => 'required',
             'tags' => 'required',
@@ -56,21 +55,15 @@ class ProductController extends Controller
             $filename = $request->file('featured_image')->store('products', 'public');
         }
 
-        $filenames = [];
-        if ($request->file('gallery')) {
-            foreach ($request->file('gallery') as $gallery) {
-                $filenames[] = $gallery->store('products/gallery', 'public');
-            }
-        }
 
         $product = new Product();
         $product->name = $request->name;
         $product->slug = $request->slug;
         $product->featured_image = $filename;
-        $product->images = json_encode($filenames);
+        $product->images = json_encode(['', '']);
         $product->short_description = $request->short_description;
         $product->description = $request->description;
-        $product->tags = json_encode($request->tags);
+        $product->tags = $request->tags;
         $product->specifications = json_encode($request->specifications);
         $product->meta_keyword = $request->meta_keyword;
         $product->meta_description = $request->meta_description;
@@ -87,7 +80,9 @@ class ProductController extends Controller
     function edit($id): View
     {
         $product = Product::findOrFail($id);
-        return view('admin.product.update', compact('product'));
+        $categories = Category::latest()->get();
+        $brands = Brand::latest()->get();
+        return view('admin.product.update', compact('product','brands','categories'));
     }
     function update(Request $request, $id): RedirectResponse
     {
@@ -95,11 +90,9 @@ class ProductController extends Controller
             'name' => 'required',
             'slug' => 'required',
             'featured_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
-            'images' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
             'short_description' => 'required',
             'description' => 'required',
-            'tags' => 'required',
-            'specifications' => 'required',
+            'tags' => 'required', 
             'meta_keyword' => 'required',
             'meta_description' => 'required',
             'current_price' => 'required',
@@ -117,26 +110,17 @@ class ProductController extends Controller
         if ($request->file('image')) {
             $filename = $request->file('image')->store('products', 'public');
         } else {
-            $filename = $product->image;
+            $filename = $product->featured_image;
         }
 
-        $filenames = [];
-        $filename1 = '';
-        if ($request->file('gallery')) {
-            foreach ($request->file('gallery') as $gallery) {
-                $filenames[] = $gallery->store('products/gallery', 'public');
-            }
-        } else {
-            $filename1 = $product->images;
-        }
 
         $product->name = $request->name;
         $product->slug = $request->slug;
         $product->featured_image = $filename;
-        $product->images = $request->file('gallery') ? json_encode($filenames) : $filename1;
+        $product->images = json_encode(['', '']);
         $product->short_description = $request->short_description;
         $product->description = $request->description;
-        $product->tags = json_encode($request->tags);
+        $product->tags = $request->tags;
         $product->specifications = json_encode($request->specifications);
         $product->meta_keyword = $request->meta_keyword;
         $product->meta_description = $request->meta_description;

@@ -70,17 +70,11 @@
                                                     <div class="dropdown-menu animated--fade-in"
                                                         aria-labelledby="dropdownMenuButton">
                                                         <a class="dropdown-item"
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/admin/affiliate/592/edit"><i
+                                                            href="{{ route('admin.product.edit', ['id'=>$product->id]) }}"><i
                                                                 class="fas fa-angle-double-right"></i> Edit</a>
                                                         <a class="dropdown-item" target="_blank"
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/product/Men-Polo-t-shirt"><i
+                                                            href="{{ route('admin.product.edit', ['id'=>$product->id]) }}"><i
                                                                 class="fas fa-angle-double-right"></i> View</a>
-                                                        <a class="dropdown-item"
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/admin/item/galleries/592"><i
-                                                                class="fas fa-angle-double-right"></i> Gallery Images</a>
-                                                        <a class="dropdown-item"
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/admin/item/highlight/592"><i
-                                                                class="fas fa-angle-double-right"></i> Highlight</a>
                                                         <a class="dropdown-item" data-toggle="modal"
                                                             data-target="#confirm-delete" href="javascript:;"
                                                             data-href="{{ route('admin.product.delete', ['id' => $product->id]) }}"><i

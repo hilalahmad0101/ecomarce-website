@@ -9,6 +9,8 @@ use App\Models\Order;
 use App\Models\Transaction;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Stripe;
 
 class CheckoutController extends Controller
 {
@@ -74,27 +76,100 @@ class CheckoutController extends Controller
         $order->transaction_id = 'null';
         $order->user_id = auth()->id();
         $order->total_amount = $total_amount;
-        $order->payment_status = 'pending';
-        $order->order_status = 'UnPaid';
+        $order->payment_status = 'unpaid';
+        $order->order_status = 'pending';
         $order->product_id = json_encode($product_ids);
         $order->payment_method = $request->payment_method;
         $order->save();
 
         $transaction->order_id = $order->uuid;
         $transaction->user_id = auth()->id();
-        $transaction->payment_status = 'pending';
-        $transaction->order_status = 'UnPaid';
+        $transaction->payment_status = 'unpaid';
+        $transaction->order_status = 'pending';
         $transaction->total_amount = $total_amount;
         $transaction->save();
 
         Cart::whereUserId(auth()->id())->delete();
 
-        return redirect()->route('user.wishlist')->with('success', 'Order place successfully');
+        return redirect()->route('user.order')->with('success', 'Order place successfully');
     }
 
-    function order()  {
-        $orders=Order::whereUserId(auth()->id())->latest()->get();
-        return view('user.order',compact('orders'));
-        
+    function order()
+    {
+        $orders = Order::whereUserId(auth()->id())->latest()->get();
+        return view('user.order', compact('orders'));
+    }
+
+    public function stripePost(Request $request)
+    {
+        $total_amount = Cart::whereUserId(auth()->id())->sum('sub_total');
+
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+        $charge = Stripe\Charge::create([
+            "amount" => 100 * $total_amount,
+            "currency" => "usd",
+            "source" => $request->stripeToken,
+            "description" => "Payment Successfully From " . Auth::user()->name,
+        ]);
+        if ($charge->status) {
+
+            $order = new Order();
+            $transaction = new Transaction();
+            $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+            $randomString = substr(str_shuffle($characters), 0, 10);
+
+            $product_ids = Cart::whereUserId(auth()->id())->pluck('product_id');
+            $order->uuid = $randomString;
+            $order->transaction_id = $charge->id;
+            $order->user_id = auth()->id();
+            $order->total_amount = $total_amount;
+            $order->payment_status = $charge->status == 'succeeded' ? 'paid' : 'unpaid';
+            $order->order_status = 'pending';
+            $order->product_id = json_encode($product_ids);
+            $order->payment_method = $request->payment_method;
+            $order->save();
+
+            $transaction->order_id = $order->uuid;
+            $transaction->user_id = auth()->id();
+            $transaction->payment_status = $charge->status == 'succeeded' ? 'paid' : 'unpaid';
+            $transaction->order_status = 'pending';
+            $transaction->total_amount = $total_amount;
+            $transaction->save();
+
+            Cart::whereUserId(auth()->id())->delete();
+
+            return redirect()->route('user.order')->with('success', 'Order place successfully');
+        }
+    }
+
+    function checkout_submit_back_transfer(Request $request)
+    {
+        $order = new Order();
+        $transaction = new Transaction();
+        $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        $randomString = substr(str_shuffle($characters), 0, 10);
+
+        $total_amount = Cart::whereUserId(auth()->id())->sum('sub_total');
+        $product_ids = Cart::whereUserId(auth()->id())->pluck('product_id');
+        $order->uuid = $randomString;
+        $order->transaction_id = $request->transaction;
+        $order->user_id = auth()->id();
+        $order->total_amount = $total_amount;
+        $order->payment_status = 'unpaid';
+        $order->order_status = 'pending';
+        $order->product_id = json_encode($product_ids);
+        $order->payment_method = $request->payment_method;
+        $order->save();
+
+        $transaction->order_id = $order->uuid;
+        $transaction->user_id = auth()->id();
+        $transaction->payment_status = 'unpaid';
+        $transaction->order_status = 'pending';
+        $transaction->total_amount = $total_amount;
+        $transaction->save();
+
+        Cart::whereUserId(auth()->id())->delete();
+
+        return redirect()->route('user.order')->with('success', 'Order place successfully');
     }
 }

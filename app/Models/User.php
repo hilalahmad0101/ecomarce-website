@@ -45,4 +45,14 @@ class User extends Authenticatable
     ];
 
 
+    function transactions() : HasMany {
+        return $this->hasMany(Transaction::class,'user_id');
+    }
+    function orders() : HasMany {
+        return $this->hasMany(Order::class,'user_id');
+    }
+    function wishlists() : HasMany {
+        return $this->hasMany(Wishlist::class,'user_id');
+    }
+
 }

@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BlogController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\FaqCategoryController;
 use App\Http\Controllers\Admin\FaqController;
@@ -29,6 +30,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+        Route::controller(LoginController::class)->group(function () {
+            Route::get('/profile', 'profile_view')->name('admin.profile.view');
+            Route::post('/profile/update', 'update_profile')->name('admin.update.profile');
+            Route::get('/logout', 'logout')->name('admin.logout');
+        });
 
         Route::controller(CategoryController::class)->group(function () {
             Route::get('/category/index', 'index')->name('admin.category.index');
@@ -151,11 +157,38 @@ Route::prefix('admin')->group(function () {
 
         Route::controller(ManageSiteController::class)->group(function () {
             Route::get('/manage-site/index', 'index')->name('admin.manage-site.index');
-            Route::post('/manage-site/store', 'update_manage_site')->name('admin.manage-site.store');
+            Route::post('/manage-site/basic-setting', 'basic_setting')->name('admin.manage-site.basic_setting');
+            Route::post('/manage-site/media', 'media')->name('admin.manage-site.media');
+            Route::post('/manage-site/seo', 'seo')->name('admin.manage-site.seo');
+            Route::post('/manage-site/footer', 'footer')->name('admin.manage-site.footer');
+            Route::post('/manage-site/home_page', 'home_page')->name('admin.manage-site.home_page');
+            Route::post('/manage-site/first_three_column', 'first_three_column')->name('admin.manage-site.first_three_column');
+            Route::post('/manage-site/second_three_column', 'second_three_column')->name('admin.manage-site.second_three_column');
+            Route::post('/manage-site/third_two_column', 'third_two_column')->name('admin.manage-site.third_two_column');
+            Route::post('/manage-site/four_three_column', 'four_three_column')->name('admin.manage-site.four_three_column');
         });
 
         Route::controller(ManageController::class)->group(function(){
             Route::get('/all-order','index')->name('admin.all.order');
+            Route::get('/pending-order','pending_order')->name('admin.pending.order');
+            Route::get('/progress-order','progress_order')->name('admin.progress.order');
+            Route::get('/delivered-order','delivered_order')->name('admin.delivered.order');
+            Route::get('/canceled-order','canceled_order')->name('admin.canceled.order');
+            Route::get('/change-payment-status//{id}','change_payment_status')->name('admin.order.change.status');
+            Route::get('/pending-status/{id}','pending_status')->name('admin.order.change.pending.status');
+            Route::get('/progress-status/{id}','progress_status')->name('admin.order.change.progress.status');
+            Route::get('/delivered-status/{id}','delivered_status')->name('admin.order.change.delivered.status');
+            Route::get('/canceled-status/{id}','canceled_status')->name('admin.order.change.canceled.status');
+            Route::get('/transactions','transactions')->name('admin.transactions');
+            Route::get('/transactions/{id}','transactions_delete')->name('admin.transactions.delete');
         });
+
+        Route::controller(CustomerController::class)->group(function(){
+            Route::get('/customers','index')->name('admin.customer');
+            Route::get('/customers/edit/{id}','edit')->name('admin.customer.edit');
+            Route::post('/customers/{id}','update')->name('admin.customer.update');
+            Route::get('/customers/{id}','delete')->name('admin.customer.delete');
+        });
+ 
     });
 });

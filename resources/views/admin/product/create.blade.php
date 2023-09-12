@@ -78,32 +78,6 @@
                             </div>
                             <div class="card">
                                 <div class="card-body">
-                                    <div class="form-group pb-0  mb-0">
-                                        <label>Gallery Images </label>
-                                    </div>
-                                    <div class="form-group pb-0 pt-0 mt-0 mb-0">
-                                        <div id="gallery-images">
-                                            <div class="single-image">
-                                                <img class="admin-img lg" src="">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group position-relative ">
-                                        <label class="file">
-                                            <input type="file" accept="image/*" name="gallery[]" id="file"
-                                                aria-label="File browser example" accept="image/*" multiple>
-                                            <span class="file-custom text-left">Upload Image...</span>
-                                        </label>
-                                        <br>
-                                        <span class="mt-1 text-info">Image Size Should Be 800 x 800. or square size</span>
-                                    </div>
-                                    @error('gallery')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
                                     <div class="form-group">
                                         <label for="sort_details">Short Description *</label>
                                         <textarea name="short_description" id="sort_details" class="form-control" placeholder="Short Description"></textarea>
@@ -132,38 +106,6 @@
                                         @error('tags')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="switch-primary">
-                                            <input type="checkbox" class="switch switch-bootstrap status radio-check"
-                                                name="is_specification" value="1" checked>
-                                            <span class="switch-body"></span>
-                                            <span class="switch-text">Specifications</span>
-                                        </label>
-                                    </div>
-                                    <div id="specifications-section">
-                                        <div class="d-flex">
-                                            <div class="flex-grow-1">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                        name="specification_name[]" placeholder="Specification Name"
-                                                        value="">
-                                                </div>
-                                            </div>
-                                            <div class="flex-grow-1">
-                                                <div class="form-group">
-                                                    <input type="text" class="form-control"
-                                                        name="specification_description[]"
-                                                        placeholder="Specification description" value="">
-                                                </div>
-                                            </div>
-                                            <div class="flex-btn">
-                                                <button type="button" class="btn btn-success add-specification"
-                                                    data-text="Specification Name" data-text1="Specification Description">
-                                                    <i class="fa fa-plus"></i> </button>
-                                            </div>
-                                        </div>
-
                                     </div>
                                 </div>
                             </div>

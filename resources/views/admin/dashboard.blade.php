@@ -25,7 +25,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Orders</b></p>
-                                            <h4 class="card-title">39</h4>
+                                            <h4 class="card-title">{{ $all_orders }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -45,7 +45,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Pending Orders</b></p>
-                                            <h4 class="card-title">39</h4>
+                                            <h4 class="card-title">{{ $pending_orders }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Delivered Orders</b></p>
-                                            <h4 class="card-title">0</h4>
+                                            <h4 class="card-title">{{ $delivered_orders }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Canceled Orders</b></p>
-                                            <h4 class="card-title">0</h4>
+                                            <h4 class="card-title">{{ $canceled_orders }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -103,7 +103,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Earning</b></p>
-                                            <h4 class="card-title">$0</h4>
+                                            <h4 class="card-title">${{ $total_earning }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -124,7 +124,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Products</b></p>
-                                            <h4 class="card-title">51</h4>
+                                            <h4 class="card-title">{{ $total_products }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -144,7 +144,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Customers</b></p>
-                                            <h4 class="card-title">2</h4>
+                                            <h4 class="card-title">{{ $total_customer }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -166,7 +166,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Categories</b></p>
-                                            <h4 class="card-title">9</h4>
+                                            <h4 class="card-title">{{ $total_category }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -186,7 +186,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Brands</b></p>
-                                            <h4 class="card-title">9</h4>
+                                            <h4 class="card-title">{{ $total_brand }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -226,7 +226,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Transactions</b></p>
-                                            <h4 class="card-title">25</h4>
+                                            <h4 class="card-title">{{ $total_transaction }}</h4>
                                         </div>
                                     </div>
                                 </div>
@@ -246,7 +246,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Blogs</b></p>
-                                            <h4 class="card-title">8</h4>
+                                            <h4 class="card-title">{{ $total_blog }}</h4>
                                         </div>
                                     </div>
                                 </div>

@@ -30,8 +30,7 @@
                     <div class="product-thumbnails insize">
                         <div class="">
                             <div class="item" style="position: relative; overflow: hidden;">
-                                <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634490542Hd47c5c350c3f44839b7573930fe5ab4dX.jpg"
-                                    alt="zoom">
+                                <img src="{{ asset('storage') }}/{{ $product->featured_image }}" alt="zoom">
                             </div>
                         </div>
                     </div>
@@ -41,11 +40,6 @@
             <div class="col-xxl-7 col-lg-6 col-md-6">
                 <div class="details-page-top-right-content d-flex align-items-center">
                     <div class="div w-100">
-                        <input type="hidden" id="item_id" value="535">
-                        <input type="hidden" id="demo_price" value="134.83">
-                        <input type="hidden" value="$" id="set_currency">
-                        <input type="hidden" value="1" id="set_currency_val">
-                        <input type="hidden" value="1" id="currency_direction">
                         <h4 class="mb-2 p-title-main">{{ $product->name }}
                         </h4>
                         <div class="mb-3">
@@ -73,8 +67,9 @@
                                         <input type="text" class="qtyValue cart-amount" value="1">
                                     </div>
                                     <div class="p-action-button">
-                                        <button class="btn btn-primary m-0 a-t-c-mr" id="add_to_cart"><i
-                                                class="icon-bag"></i><span>Add to Cart</span></button>
+                                        <a href="{{ route('user.add_to_cart', ['id' => $product->id]) }}"
+                                            class="btn btn-primary m-0 a-t-c-mr" id=""><i
+                                                class="icon-bag"></i><span>Add to Cart</span></a>
                                         <button class="btn btn-primary m-0" id="but_to_cart"><i
                                                 class="icon-bag"></i><span>Buy Now</span></button>
                                     </div>
@@ -87,19 +82,19 @@
 
                                 <div class="pt-1 mb-1"><span class="text-medium">Categories:</span>
                                     <a
-                                        href="https://geniusdevs.com/codecanyon/omnimart40/catalog?category=Women-Clothing">{{ $product->categories->name }}</a>
+                                        href="{{ route('user.category.product', ['slug' => $product->categories->slug]) }}">{{ $product->categories->name }}</a>
                                     /
                                     <a
-                                        href="https://geniusdevs.com/codecanyon/omnimart40/catalog?subcategory=Bottoms">{{ $product->sub_categories->name }}</a>
-                                    <a href="https://geniusdevs.com/codecanyon/omnimart40/catalog?childcategory="></a>
+                                        href="{{ route('user.category.product', ['slug' => $product->sub_categories->slug]) }}">{{ $product->sub_categories->name }}</a>
                                 </div>
                                 <div class="pt-1 mb-1"><span class="text-medium">Tags:</span>
                                     @php
-                                        $tags = json_decode($product->tags);
+                                        $tags = json_encode($product->tags);
+                                        $tags = json_decode($tags);
                                         $tags = json_decode($tags);
                                     @endphp
                                     @foreach ($tags as $tag)
-                                        <a href="https://geniusdevs.com/codecanyon/omnimart40/catalog?tag=women">
+                                        <a href="">
                                             {{ $tag->value }}</a>,
                                     @endforeach
                                 </div>
@@ -291,7 +286,8 @@
                         <div class="slider-item">
                             <div class="product-card">
                                 <div class="product-thumb">
-                                    <img class="lazy" data-src="{{ asset('storage') }}/{{ $product1->featured_image }}"
+                                    <img class="lazy"
+                                        data-src="{{ asset('storage') }}/{{ $product1->featured_image }}"
                                         alt="Product">
                                     <div class="product-button-group">
                                         @if (Auth::user() && Auth::user()->id)
@@ -330,9 +326,10 @@
                                     </div>
                                 </div>
                                 <div class="product-card-body">
-                                    <div class="product-category"><a href="">{{ $product->categories->name }}</a></div>
+                                    <div class="product-category"><a href="">{{ $product->categories->name }}</a>
+                                    </div>
                                     <h3 class="product-title"><a
-                                            href="{{ route('user.product_details', ['slug'=>$product1->slug]) }}">
+                                            href="{{ route('user.product_details', ['slug' => $product1->slug]) }}">
                                             {{ \Illuminate\Support\Str::substr($product1->name, 0, 50) }}
                                         </a></h3>
                                     <div class="rating-stars">
@@ -353,4 +350,65 @@
             </div>
         </div>
     </div>
+    <form class="modal fade ratingForm show" action="https://geniusdevs.com/codecanyon/omnimart40/review/submit"
+        method="post" id="leaveReview" tabindex="-1" style="display: block; padding-left: 0px;" aria-modal="true"
+        role="dialog">
+        <input type="hidden" name="_token" value="ym8BLsdAgqNVUjDoWtONp0TP6ANU7nzlSDqonXkK">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Leave a Review</h4>
+                    <button class="close modal_close" type="button" data-bs-dismiss="modal" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="review-name">Your Name</label>
+                                <input class="form-control" type="text" id="name" value="{{ Auth::user()->name }}"
+                                    required="">
+                            </div>
+                        </div>
+                        <input type="hidden" name="item_id" value="587">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="review-email">Your Email</label>
+                                <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}"
+                                    required="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="review-subject">Subject</label>
+                                <input class="form-control" type="text" name="subject" id="review-subject"
+                                    required="">
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label for="review-rating">Rating</label>
+                                <select name="rating" class="form-control" id="review-rating">
+                                    <option value="5">5 Stars</option>
+                                    <option value="4">4 Stars</option>
+                                    <option value="3">3 Stars</option>
+                                    <option value="2">2 Stars</option>
+                                    <option value="1">1 Star</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="review-message">Review</label>
+                        <textarea class="form-control" name="review" id="review-message" rows="8" required=""></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit"><span>Submit Review</span></button>
+                </div>
+            </div>
+        </div>
+    </form>
 @endsection

@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\User\Auth\LoginController;
 use App\Http\Controllers\User\Auth\RegisterController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\CheckoutController;
+use App\Http\Controllers\User\CompareController;
+use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\WishListController;
 use Illuminate\Support\Facades\Route;
@@ -35,8 +38,14 @@ Route::middleware(['guest'])->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('user.home');
+    Route::get('/blog', 'blog')->name('user.blog');
+    Route::get('/search/blog', 'blog_search')->name('user.search');
+    Route::get('/blog/{id}', 'blog_details')->name('user.blog_details');
+    Route::get('/blog/category/{id}', 'blog_by_category')->name('user.blog.category');
     Route::get('/product-details/{slug}', 'product_details')->name('user.product_details');
     Route::get('/shop', 'shop')->name('user.shop');
+    Route::get('/faq', 'faq_category')->name('user.faq');
+    Route::get('/faq/{id}', 'faq_by_category')->name('user.faqs');
     Route::get('/price/product', 'product_by_price')->name('user.product.price');
     Route::get('/category', 'category')->name('user.category');
     Route::get('/search', 'search_product')->name('user.search.product');
@@ -64,12 +73,27 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/wishlist/clear', 'clear_wishlist')->name('user.wishlist.clear');
         Route::get('/wishlist/remove/{id}', 'remove_wishlist')->name('user.wishlist.remove');
     });
+    Route::controller(CompareController::class)->group(function () {
+        Route::get('/compare', 'index')->name('user.compare');
+        Route::get('/compare/remove/{id}', 'remove_compare')->name('user.compare.remove');
+    });
     Route::controller(CheckoutController::class)->group(function () {
         Route::get('/checkout', 'index')->name('user.checkout');
         Route::post('/billing/address', 'update_billing_address')->name('user.billing_address');
         Route::get('/payment', 'payment')->name('user.payment');
         Route::get('/order', 'order')->name('user.order');
         Route::post('/checkout/cash-on-delivery', 'checkout_submit_cash_on_delivery')->name('user.checkout.cash.on.delivery');
+        Route::post('/checkout/bank-transfer', 'checkout_submit_back_transfer')->name('user.checkout.bank.transfer');
+        Route::post('/stripe', 'stripePost')->name('user.checkout.stripe');
+    });
+
+    Route::controller(DashboardController::class)->group(function () {
+        Route::get('/dashboard', 'index')->name('user.dashboard');
+        Route::get('/profile', 'show_profile')->name('user.dashboard.profile');
+        Route::post('/update/profile', 'update_profile')->name('user.profile.update');
+        Route::get('/address', 'show_address')->name('user.dashboard.address');
+        Route::post('/update/address', 'update_address')->name('user.address.update');
+        Route::get('/logout', 'logout')->name('user.logout');
     });
 });
 

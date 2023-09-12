@@ -82,7 +82,7 @@
                                         </td>
 
                                         <td>
-                                            ${{ $order->sub_total }}
+                                            ${{ $order->total_amount }}
                                         </td>
 
                                         <td>
@@ -96,10 +96,10 @@
                                                     aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#statusModal"
                                                         href="javascript:;"
-                                                        data-href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/status/156/payment_status/Paid">Paid</a>
+                                                        data-href="{{ route('admin.order.change.status',['id'=>$order->id]) }}">Paid</a>
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#statusModal"
                                                         href="javascript:;"
-                                                        data-href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/status/156/payment_status/Unpaid">Unpaid</a>
+                                                        data-href="{{ route('admin.order.change.status',['id'=>$order->id]) }}">Unpaid</a>
                                                 </div>
                                             </div>
                                         </td>
@@ -114,22 +114,22 @@
                                                     aria-labelledby="dropdownMenuButton">
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#statusModal"
                                                         href="javascript:;"
-                                                        data-href="pending">Pending</a>
+                                                        data-href="{{ route('admin.order.change.pending.status', ['id'=>$order->id]) }}">Pending</a>
                                                     <a class="dropdown-item" data-toggle="modal" data-target="#statusModal"
                                                         href="javascript:;"
-                                                        data-href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/status/156/order_status/In%20Progress">In
+                                                        data-href="{{ route('admin.order.change.progress.status', ['id'=>$order->id]) }}">In
                                                         Progress</a>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="#statusModal" href="javascript:;"
-                                                        data-href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/status/156/order_status/Delivered">Delivered</a>
+                                                        data-href="{{ route('admin.order.change.delivered.status', ['id'=>$order->id]) }}">Delivered</a>
                                                     <a class="dropdown-item" data-toggle="modal"
                                                         data-target="#statusModal" href="javascript:;"
-                                                        data-href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/status/156/order_status/Canceled">Canceled</a>
+                                                        data-href="{{ route('admin.order.change.canceled.status', ['id'=>$order->id]) }}">Canceled</a>
                                                 </div>
                                             </div>
                                         </td>
                                         <td>
-                                            <div class="action-list">
+                                            <div class="action-list">   
                                                 <a class="btn btn-secondary btn-sm"
                                                     href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/invoice/156">
                                                     <i class="fas fa-eye"></i>

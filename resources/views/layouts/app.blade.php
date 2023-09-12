@@ -1,3 +1,12 @@
+
+@php
+    $media_setting=\App\Models\ManageSite::where('key','media')->first();
+    $footer_setting=\App\Models\ManageSite::where('key','footer')->first();
+    $media_value=json_decode($media_setting->value);
+    $footer_value=json_decode($footer_setting->value);
+@endphp
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,20 +15,20 @@
     <title> @yield('title') </title>
 
     <!-- SEO Meta Tags-->
-    <meta name="keywords" content="Lorem,ipsum,dolor,amet">
+    <meta name="keywords" content="@yield('tag')">
     <meta name="description"
-        content="Omnimart - Multipurpose eCommerce  Shopping Platform Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over .">
-    <meta name="author" content="OmniMart">
+        content="@yield('title')">
+    <meta name="author" content="Online Bazzar">
     <meta name="distribution" content="web">
     <!-- Mobile Specific Meta Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <!-- Favicon Icons-->
-    <link rel="icon" type="image/png" href="{{ asset('assets/images/1629651232pre.png') }}">
-    <link rel="apple-touch-icon" href="{{ asset('assets/images/1629651232pre.png') }}">
-    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('assets/images/1629651232pre.png') }}">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/images/1629651232pre.png') }}">
-    <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('assets/images/1629651232pre.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('storage') }}/{{ $media_value->favicon }}">
+    <link rel="apple-touch-icon" href="{{ asset('storage') }}/{{ $media_value->favicon }}">
+    <link rel="apple-touch-icon" sizes="152x152" href="{{ asset('storage') }}/{{ $media_value->favicon }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('storage') }}/{{ $media_value->favicon }}">
+    <link rel="apple-touch-icon" sizes="167x167" href="{{ asset('storage') }}/{{ $media_value->favicon }}">
     <!-- Vendor Styles including: Bootstrap, Font Icons, Plugins, etc.-->
     <link rel="stylesheet" media="screen" href="{{ asset('assets/front/css/plugins.min.css') }}">
 
@@ -36,30 +45,13 @@
     <style>
 
     </style>
-
-
-
-
-
-
-
-
-
+ 
 </head>
 <!-- Body-->
 
 <body class="
 body_theme1
 ">
-
-    <!-- Preloader Start -->
-    {{-- <div id="preloader">
-        <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/16388581681_D-ZiKd0B00tdifaB2X3tKQ.gif"
-            alt="Loading...">
-    </div> --}}
-
-    <!-- Preloader endif -->
-
 
     <!-- Header-->
     <header class="site-header navbar-sticky">
@@ -69,21 +61,34 @@ body_theme1
                     <div class="col-md-4">
                         <div class="t-m-s-a">
                             <a class="track-order-link compare-mobile d-lg-none"
-                                href="https://geniusdevs.com/codecanyon/omnimart40/compare/products">Compare</a>
+                                href="{{ route('user.compare') }}">Compare</a>
                         </div>
                     </div>
                     <div class="col-md-8">
                         <div class="right-area">
 
                             <a class="track-order-link wishlist-mobile d-inline-block d-lg-none"
-                                href="https://geniusdevs.com/codecanyon/omnimart40/user/wishlists"><i
+                                href="{{ route('user.wishlist') }}"><i
                                     class="icon-heart"></i>Wishlist</a>
 
+                            @if (Auth::check())
+                            <div class="login-register ">
+                                <a class="track-order-link mr-0" href="{{ route('user.dashboard') }}">
+                                   Dashboard
+                                </a>
+                                <a style="margin-left: 20px;" class="track-order-link mr-0" href="{{ route('user.logout') }}">
+                                    Logout
+                                 </a>
+                            </div>
+                            @else
+                                
                             <div class="login-register ">
                                 <a class="track-order-link mr-0" href="{{ route('user.register') }}">
                                     Login/Register
                                 </a>
                             </div>
+                            @endif
+
                         </div>
                     </div>
                 </div>
@@ -97,8 +102,8 @@ body_theme1
                         <div class="d-flex justify-content-between">
                             <!-- Logo-->
                             <div class="site-branding"><a class="site-logo align-self-center"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40"><img
-                                        src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634218044logoforsite.png"
+                                    href="/"><img
+                                        src="{{ asset('storage') }}/{{ $media_value->logo }}"
                                         alt="OmniMart"></a></div>
                             <!-- Search / Categories-->
                             <div class="search-box-wrap d-none d-lg-block d-flex">
@@ -144,7 +149,7 @@ body_theme1
                                     </a>
                                 </div>
 
-                                <div class="toolbar-item hidden-on-mobile"><a href="">
+                                <div class="toolbar-item hidden-on-mobile"><a href="{{ route('user.compare') }}">
                                         <div><span class="compare-icon"><i class="icon-repeat"></i><span
                                                     class="count-label compare_count">{{ \App\Models\Compare::where('user_id', auth()->id())->count() }}</span></span><span
                                                 class="text-label">Compare</span></div>
@@ -176,12 +181,12 @@ body_theme1
                                         @forelse ($carts as $cart)
                                             <div class="entry">
                                                 <div class="entry-thumb"><a
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM"><img
-                                                            src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634134938Hcb62dec2d6a241fc90ce2bb04059684em.jpg"
+                                                        href="{{ route('user.product_details', ['slug'=>$cart->product->slug]) }}"><img
+                                                            src="{{ asset('storage') }}/{{ $cart->product->featured_image }}"
                                                             alt="Product"></a></div>
                                                 <div class="entry-content">
                                                     <h4 class="entry-title"><a
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/product/UMIDIGI-A--Pro-Android-Mobile-Phone--g---MP-Quad-Camera------FHD--Full-Screen--GB-RAM">
+                                                            href="{{ route('user.product_details', ['slug'=>$cart->product->slug]) }}">
                                                             {{ $cart->product->name }}
                                                         </a></h4>
                                                     <span class="entry-meta">{{ $cart->qty }} x
@@ -189,7 +194,7 @@ body_theme1
 
                                                 </div>
                                                 <div class="entry-delete"><a
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/cart/destroy/540-"><i
+                                                        href="{{ route('user.cart.remove', ['id'=>$cart->id]) }}"><i
                                                             class="icon-x"></i></a></div>
                                             </div>
                                             
@@ -207,7 +212,7 @@ body_theme1
                                             </div>
                                             <div class="w-50 d-block text-end"><a
                                                     class="btn btn-primary btn-sm  mb-0"
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/checkout/billing/address"><span>Checkout</span></a>
+                                                    href="{{ route('user.payment') }}"><span>Checkout</span></a>
                                             </div>
                                         </div>
 
@@ -254,14 +259,14 @@ body_theme1
                                             <li class=""><a href="{{ route('user.shop') }}"><i
                                                         class="icon-chevron-right"></i>Shop</a></li>
                                             <li class=""><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/campaign/products"><i
-                                                        class="icon-chevron-right"></i>Campaign</a></li>
+                                                    href="{{ route('user.category') }}"><i
+                                                        class="icon-chevron-right"></i>Category</a></li>
                                             <li class=""><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/brands"><i
+                                                    href="{{ route('user.brand') }}"><i
                                                         class="icon-chevron-right"></i>Brand</a></li>
 
                                             <li class=""><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/blog"><i
+                                                    href="{{ route('user.blog') }}"><i
                                                         class="icon-chevron-right"></i>Blog</a></li>
                                             {{-- <li class="t-h-dropdown">
                                                 <a class="" href="#"><i
@@ -303,7 +308,7 @@ body_theme1
                                                 @foreach ($categories as $category)
                                                     <li class="has-children">
                                                         <a class="category_search"
-                                                            href="https://geniusdevs.com/codecanyon/omnimart40/catalog?category=Women-Clothing">Women
+                                                            href="">Women
                                                             Clothing
                                                             <span><i class="icon-chevron-down"></i></span>
                                                         </a>
@@ -353,7 +358,7 @@ body_theme1
                                 @foreach ($categories1 as $category)
                                     <div class="c-item">
                                         <a class="d-block navi-link"
-                                            href="https://geniusdevs.com/codecanyon/omnimart40/catalog?category={{ $category->slug }}">
+                                            href="/shop/category/{{ $category->id }}">
                                             <img class="lazy"
                                                 data-src="{{ asset('storage') }}/{{ $category->image }}">
                                             <span class="text-gray-dark">{{ $category->name }}</span>
@@ -363,14 +368,14 @@ body_theme1
                                             <div class="child-c-box">
                                                 @foreach ($category->sub_category as $sub_category)
                                                     <a class="title"
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/catalog?subcategory={{ $sub_category->slug }}">
+                                                        href="/shop/category/{{ $sub_category->id }}/{{ $category->id }}">
                                                         {{ $sub_category->name }}
                                                         <i class="icon-chevron-right"></i>
                                                     </a>
                                                     <div class="child-category">
                                                         @foreach ($sub_category->child_category as $child_category)
                                                             <a
-                                                                href="https://geniusdevs.com/codecanyon/omnimart40/catalog?childcategory={{ $child_category->slug }}">{{ $child_category->name }}</a>
+                                                                href="/shop/category/{{ $child_category->id }}/{{ $category->id }}/{{ $sub_category->id }}">{{ $child_category->name }}</a>
                                                         @endforeach
 
                                                     </div>
@@ -379,7 +384,7 @@ body_theme1
                                         </div>
                                     </div>
                                 @endforeach
-                                <a href="https://geniusdevs.com/codecanyon/omnimart40/catalog"
+                                <a href="{{ route('user.category') }}"
                                     class="d-block navi-link view-all-category">
                                     <img class="lazy"
                                         data-src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/category.jpg"
@@ -405,7 +410,7 @@ body_theme1
                                     </li>
                                     <li class=""><a href="{{ route('user.brand') }}">Brand</a></li>
                                     <li class=""><a
-                                            href="https://geniusdevs.com/codecanyon/omnimart40/blog">Blog</a></li>
+                                            href="{{ route('user.blog') }}">Blog</a></li>
                                     <li class=""><a
                                             href="https://geniusdevs.com/codecanyon/omnimart40/contact">Contact</a>
                                     </li>
@@ -467,18 +472,18 @@ body_theme1
                     <!-- Contact Info-->
                     <section class="widget widget-light-skin">
                         <h3 class="widget-title">Get In Touch</h3>
-                        <p class="mb-1"><strong>Address: </strong> 514 S. Magnolia St. Orlando, FL 32806, USA</p>
-                        <p class="mb-1"><strong>Phone: </strong> 453876234</p>
-                        <p class="mb-3"><strong>Email: </strong> demoemail123@gmail.com</p>
+                        <p class="mb-1"><strong>Address: </strong> {{ $footer_value->address }}</p>
+                        <p class="mb-1"><strong>Phone: </strong> {{$footer_value->phone}}</p>
+                        <p class="mb-3"><strong>Email: </strong> {{ $footer_value->email }}</p>
                         <ul class="list-unstyled text-sm">
                             <li><span class=""><strong>Monday-Friday: </strong></span>9:27 PM - 9:27 PM</li>
                             <li><span class=""><strong>Saturday: </strong></span>9:27 PM - 9:27 PM</li>
                         </ul>
                         <div class="footer-social-links">
-                            <a href="https://www.facebook.com"><span><i class="fab fa-facebook-f"></i></span></a>
-                            <a href="https://www.twitter.com"><span><i class="fab fa-twitter"></i></span></a>
-                            <a href="https://www.youtube.com"><span><i class="fab fa-youtube"></i></span></a>
-                            <a href="https://www.linkedin.com"><span><i class="fab fa-linkedin-in"></i></span></a>
+                            <a href="{{ $footer_value->facebook }}"><span><i class="fab fa-facebook-f"></i></span></a>
+                            <a href="{{ $footer_value->twitter }}"><span><i class="fab fa-twitter"></i></span></a>
+                            <a href="{{ $footer_value->youtube }}"><span><i class="fab fa-youtube"></i></span></a>
+                            <a href="{{ $footer_value->linkedin }}"><span><i class="fab fa-linkedin-in"></i></span></a>
                         </div>
                     </section>
                 </div>
@@ -488,23 +493,8 @@ body_theme1
                         <h3 class="widget-title">Usefull Links</h3>
                         <ul>
                             <li>
-                                <a class="" href="https://geniusdevs.com/codecanyon/omnimart40/faq">Faq</a>
+                                <a class="" href="{{ route('user.faq') }}">Faq</a>
                             </li>
-                            <li><a href="https://geniusdevs.com/codecanyon/omnimart40/about-us">About Us</a></li>
-
-                            <li><a href="https://geniusdevs.com/codecanyon/omnimart40/privacy-policy">Privacy
-                                    Policy</a></li>
-
-                            <li><a href="https://geniusdevs.com/codecanyon/omnimart40/terms-and-service">Terms &amp;
-                                    Service</a></li>
-
-                            <li><a href="https://geniusdevs.com/codecanyon/omnimart40/return-policy">Return Policy</a>
-                            </li>
-
-                            <li><a href="https://geniusdevs.com/codecanyon/omnimart40/How-It-Works">How It Works</a>
-                            </li>
-
-
                         </ul>
                     </div>
                 </div>
@@ -532,19 +522,12 @@ body_theme1
                                     <span>Subscribe</span>
                                 </button>
                             </div>
-                            <div class="col-lg-12">
-                                <p class="text-sm opacity-80 pt-2">Subscribe to our Newsletter to receive early
-                                    discount offers, latest news, sales and promo information.</p>
-                            </div>
                         </form>
-                        <div class="pt-3"><img class="d-block gateway_image"
-                                src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/16305963101621960148credit-cards-footer.png">
-                        </div>
                     </section>
                 </div>
             </div>
             <!-- Copyright-->
-            <p class="footer-copyright"> OmniMart © All rights reserved.</p>
+            <p class="footer-copyright"> {{ $footer_value->copyright }}</p>
         </div>
     </footer>
 
@@ -553,18 +536,8 @@ body_theme1
         <i class="icon-chevron-up"></i>
     </a>
 
-    <div class="color-picker">
-        <span class="spiner"><i class="fas fa-cog fa-spin"></i></span>
-        <a href="javascript:;" class="color__check " style="background: #FF6A00;" data-href="FF6A00"></a>
-        <a href="javascript:;" class="color__check " style="background: #ff4719;" data-href="ff4719"></a>
-        <a href="javascript:;" class="color__check " style="background: #03a9f4;" data-href="03a9f4"></a>
-        <a href="javascript:;" class="color__check " style="background: #A120CB;" data-href="A120CB"></a>
-        <a href="javascript:;" class="color__check " style="background: #12A05C;" data-href="12A05C"></a>
-        <a href="javascript:;" class="color__check " style="background: #000;" data-href="000"></a>
-    </div>
 
     <!-- Backdrop-->
-    <div class="site-backdrop"></div>
 
     <!-- Cookie alert dialog  -->
 
@@ -599,7 +572,7 @@ body_theme1
         })
     </script>
 
-
+@yield('footer')
 </body>
 
 </html>

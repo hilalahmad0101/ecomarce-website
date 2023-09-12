@@ -42,10 +42,11 @@ class BlogController extends Controller
 
         $blog->image = $filename;
         $blog->title = $request->title;
+        $blog->cat_id = $request->cat_id;
         $blog->description = $request->description;
         $blog->tags = $request->tags;
         $blog->meta_description = $request->meta_description;
-        $blog->meta_keyword = $request->meta_keyword;
+        $blog->meta_keyword = $request->meta_keywords;
         $blog->save();
         return redirect()->route('admin.blog.index')->with('success', 'Blog Create successfully');
     }
@@ -80,7 +81,7 @@ class BlogController extends Controller
         $blog->description = $request->description;
         $blog->tags = $request->tags;
         $blog->meta_description = $request->meta_description;
-        $blog->meta_keyword = $request->meta_keyword;
+        $blog->meta_keyword = $request->meta_keywords;
         $blog->save();
         return redirect()->route('admin.blog.index')->with('success', 'Blog Update successfully');
     }

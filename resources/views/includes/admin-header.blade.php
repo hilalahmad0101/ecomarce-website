@@ -2,7 +2,7 @@
     <!-- Logo Header -->
     <div class="logo-header">
 
-        <a href="https://geniusdevs.com/codecanyon/omnimart40/admin" class="logo">
+        <a href="/" class="logo">
             <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634218044logoforsite.png"
                 alt="navbar brand" class="navbar-brand">
         </a>
@@ -27,38 +27,17 @@
             <ul class="navbar-nav topbar-nav ml-md-auto align-items-center">
                 <li class="nav-item mr-4">
                     <a class="btn btn-sm btn-primary py-1 text-white" title="website"
-                        href="https://geniusdevs.com/codecanyon/omnimart40" target="_blank">
+                        href="/" target="_blank">
                         <b> View Website</b>
                     </a>
                 </li>
-                <!-- Nav Item - Alerts -->
-                <li class="nav-item dropdown no-arrow mx-1">
-                    <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <i class="fas fa-bell fa-fw"></i>
-                        <!-- Counter - Alerts -->
-                        <span class="badge badge-danger badge-counter">0</span>
-                    </a>
-                    <!-- Dropdown - Alerts -->
-                    <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                        aria-labelledby="alertsDropdown" id="display-notf"
-                        data-href=https://geniusdevs.com/codecanyon/omnimart40/admin/notifications>
-                        <h6 class="dropdown-header">
-                            Notifications
-                        </h6>
-                        <a class="dropdown-item d-flex align-items-center" href="javascript:;">
-                            <div>
-                                No Notifications
-                            </div>
-                        </a>
-                    </div>
-                </li>
+              
 
                 <li class="nav-item dropdown hidden-caret">
                     <a class="dropdown-toggle profile-pic" data-toggle="dropdown"
-                        href="https://geniusdevs.com/codecanyon/omnimart40/admin" aria-expanded="false">
+                        href="" aria-expanded="false">
                         <div class="avatar-sm avatar avatar-sm">
-                            <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1631023655pexels-moose-photos-1036627.jpg"
+                            <img src="{{ asset('storage') }}/{{ Auth::guard('admin')->user()->image }}"
                                 alt="..." class="avatar-img rounded-circle">
                         </div>
                     </a>
@@ -66,13 +45,13 @@
                         <li>
                             <div class="user-box">
                                 <div class="avatar-lg"><img
-                                        src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1631023655pexels-moose-photos-1036627.jpg"
+                                        src="{{ asset('storage') }}/{{ Auth::guard('admin')->user()->image }}"
                                         alt="image profile" class="avatar-img rounded"></div>
 
                                 <div class="u-text">
-                                    <h4>Admin</h4>
-                                    <p class="text-muted">admin@gmail.com</p><a
-                                        href="https://geniusdevs.com/codecanyon/omnimart40/admin/profile"
+                                    <h4>{{ Auth::guard('admin')->user()->username }}</h4>
+                                    <p class="text-muted">{{ Auth::guard('admin')->user()->email }}</p><a
+                                        href="{{ route('admin.profile.view') }}"
                                         class="btn  btn-secondary btn-sm">Update Profile</a>
                                 </div>
                             </div>
@@ -80,15 +59,11 @@
                         <li>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item"
-                                href="https://geniusdevs.com/codecanyon/omnimart40/admin/profile">Update
+                                href="{{ route('admin.profile.view') }}">Update
                                 Profile</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item"
-                                href="https://geniusdevs.com/codecanyon/omnimart40/admin/password">Change
-                                Password</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item"
-                                href="https://geniusdevs.com/codecanyon/omnimart40/admin/logout">Logout</a>
+                                href="{{ route('admin.logout') }}">Logout</a>
                         </li>
                     </ul>
                 </li>

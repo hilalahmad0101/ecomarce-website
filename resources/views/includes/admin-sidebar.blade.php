@@ -21,7 +21,7 @@
             <ul class="nav">
 
                 <li class="nav-item">
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin">
+                    <a href="{{ route('admin.dashboard') }}">
                         <i class="fas fa-home"></i>
                         <p>Dashboard</p>
                     </a>
@@ -100,26 +100,26 @@
                             </li>
                             <li class="">
                                 <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/orders?type=Pending">
+                                    href="{{ route('admin.pending.order') }}">
                                     <span class="sub-item">Pending Orders</span>
                                 </a>
                             </li>
                             <li class="">
                                 <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/orders?type=In Progress">
+                                    href="{{ route('admin.progress.order') }}">
                                     <span class="sub-item">Progress Orders</span>
                                 </a>
                             </li>
 
                             <li class="">
                                 <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/orders?type=Delivered">
+                                    href="{{ route('admin.delivered.order') }}">
                                     <span class="sub-item">Delivered Orders</span>
                                 </a>
                             </li>
                             <li class="">
                                 <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/orders?type=Canceled">
+                                    href="{{ route('admin.canceled.order') }}">
                                     <span class="sub-item">Canceled Orders</span>
                                 </a>
                             </li>
@@ -128,13 +128,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/transactions">
+                    <a href="{{ route('admin.transactions') }}">
                         <i class="fas fa-random"></i>
                         <p>Transactions</p>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/user">
+                    <a href="{{ route('admin.customer') }}">
                         <i class="fas fa-users"></i>
                         <p>Customer List</p>
                     </a>
@@ -155,24 +155,18 @@
                         <ul class="nav nav-collapse">
                             <li>
                                 <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/setting/system">
+                                    href="{{ route('admin.manage-site.index') }}">
                                     <span class="sub-item">General Settings</span>
                                 </a>
-                            </li>
+                            </li> 
                             <li>
-                                <a class="sub-link"
-                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/home-page">
-                                    <span class="sub-item">Home Page</span>
-                                </a>
-                            </li>
-                            <li>
-                                <a class="sub-link" href="https://geniusdevs.com/codecanyon/omnimart40/admin/slider">
+                                <a class="sub-link" href="{{ route('admin.slider.index') }}">
                                     <span class="sub-item">Sliders</span>
                                 </a>
                             </li>
 
                             <li>
-                                <a class="sub-link" href="https://geniusdevs.com/codecanyon/omnimart40/admin/service">
+                                <a class="sub-link" href="{{ route('admin.service.index') }}">
                                     <span class="sub-item">Services</span>
                                 </a>
                             </li>

@@ -1,11 +1,15 @@
 <div class="sidebar">
+    @php
+        $settings=\App\Models\ManageSite::where('key','media')->first();
+        $setting_value=json_decode($settings->value);
+    @endphp
 
     <div class="sidebar-background"></div>
     <div class="sidebar-wrapper scrollbar-inner">
         <div class="sidebar-content">
             <div class="user">
                 <div class="avatar-sm float-left mr-2">
-                    <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1631023655pexels-moose-photos-1036627.jpg"
+                    <img src="{{ asset('storage') }}/{{ $setting_value->logo }}"
                         alt="..." class="avatar-img rounded-circle">
                 </div>
                 <div class="info">
@@ -76,10 +80,6 @@
                                 <a class="sub-link" href="{{ route('admin.product.index') }}">
                                     <span class="sub-item">All Products</span>
                                 </a>
-                            </li>
-                            <li>
-                                <a class="sub-link" href="https://geniusdevs.com/codecanyon/omnimart40/admin/review">
-                                    <span class="sub-item">Product Reviews</span></a>
                             </li>
                         </ul>
                     </div>
@@ -216,20 +216,6 @@
                             </li>
                         </ul>
                     </div>
-                </li>
-
-                <li class="nav-item">
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/subscribers">
-                        <i class="fab fa-telegram-plane"></i>
-                        <p>Subscribers List</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="https://geniusdevs.com/codecanyon/omnimart40/cache/clear">
-                        <i class="fas fa-broom"></i>
-                        <p>Cache Clear</p>
-                    </a>
                 </li>
             </ul>
         </div>

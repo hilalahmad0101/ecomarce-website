@@ -53,7 +53,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Slug *</label>
+                                                <label for="slug">Category *</label>
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                     @foreach ($categories as $category)
@@ -67,7 +67,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Slug *</label>
+                                                <label for="slug">Sub Category *</label>
                                                 <select name="sub_cat_id" id="sub_cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                 </select>

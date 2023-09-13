@@ -107,8 +107,8 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
 
         $filename = '';
-        if ($request->file('image')) {
-            $filename = $request->file('image')->store('products', 'public');
+        if ($request->file('featured_image')) {
+            $filename = $request->file('featured_image')->store('products', 'public');
         } else {
             $filename = $product->featured_image;
         }

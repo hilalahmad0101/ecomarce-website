@@ -58,15 +58,7 @@
                                         </a>
                                     </div>
 
-                                    <div class="single-payment-method">
-                                        <a class="text-decoration-none " href="#" data-bs-toggle="modal"
-                                            data-bs-target="#flutterwave">
-                                            <img class=""
-                                                src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1637998096download.png"
-                                                alt="Flutter Wave" title="Flutter Wave">
-                                            <p>Flutter Wave</p>
-                                        </a>
-                                    </div>
+                                   
                                     <div class="single-payment-method">
                                         <a class="text-decoration-none " href="#" data-bs-toggle="modal"
                                             data-bs-target="#cod">

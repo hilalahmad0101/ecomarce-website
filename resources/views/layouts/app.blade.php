@@ -42,6 +42,9 @@
     <!-- Modernizr-->
     <script src="{{ asset('assets/front/js/modernizr.min.js') }}"></script>
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
+
     <style>
 
     </style>
@@ -125,9 +128,8 @@ body_theme1
                                                 <button type="submit"><i class="icon-search"></i></button>
                                             </span>
                                             <input class="form-control" type="text"
-                                                data-target="https://geniusdevs.com/codecanyon/omnimart40/search/suggest"
                                                 id="" name="search"
-                                                placeholder="Search by product name">
+                                                placeholder="Search by product name" required>
                                             <div class="serch-result d-none">
                                             </div>
                                         </div>
@@ -176,8 +178,7 @@ body_theme1
                                         
                                     @endphp
                                     <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header"
-                                        id="header_cart_load"
-                                        data-target="https://geniusdevs.com/codecanyon/omnimart40/header/cart/load">
+                                        id="header_cart_load" >
                                         @forelse ($carts as $cart)
                                             <div class="entry">
                                                 <div class="entry-thumb"><a
@@ -212,7 +213,7 @@ body_theme1
                                             </div>
                                             <div class="w-50 d-block text-end"><a
                                                     class="btn btn-primary btn-sm  mb-0"
-                                                    href="{{ route('user.payment') }}"><span>Checkout</span></a>
+                                                    href="{{ route('user.checkout') }}"><span>Checkout</span></a>
                                             </div>
                                         </div>
 
@@ -254,49 +255,21 @@ body_theme1
                                     aria-labelledby="mmenu-tab">
                                     <nav class="slideable-menu">
                                         <ul>
-                                            <li class="active"><a href="/"><i
+                                            <li class="{{ Request::routeIs('user.home') ? 'active':''}}"><a href="/"><i
                                                         class="icon-chevron-right"></i>Home</a></li>
-                                            <li class=""><a href="{{ route('user.shop') }}"><i
+                                            <li class="{{ Request::routeIs('user.shop') ? 'active':''}}"><a href="{{ route('user.shop') }}"><i
                                                         class="icon-chevron-right"></i>Shop</a></li>
-                                            <li class=""><a
+                                            <li class="{{ Request::routeIs('user.category') ? 'active':''}}"><a
                                                     href="{{ route('user.category') }}"><i
                                                         class="icon-chevron-right"></i>Category</a></li>
-                                            <li class=""><a
+                                            <li class="{{ Request::routeIs('user.brand') ? 'active':''}}"><a
                                                     href="{{ route('user.brand') }}"><i
                                                         class="icon-chevron-right"></i>Brand</a></li>
 
-                                            <li class=""><a
+                                            <li class="{{ Request::routeIs('user.blog') ? 'active':''}}"><a
                                                     href="{{ route('user.blog') }}"><i
                                                         class="icon-chevron-right"></i>Blog</a></li>
-                                            {{-- <li class="t-h-dropdown">
-                                                <a class="" href="#"><i
-                                                        class="icon-chevron-right"></i>Pages <i
-                                                        class="icon-chevron-down"></i></a>
-                                                <div class="t-h-dropdown-menu">
-                                                    <a class=""
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/faq"><i
-                                                            class="icon-chevron-right pr-2"></i>Faq</a>
-                                                    <a class=" "
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/about-us"><i
-                                                            class="icon-chevron-right pr-2"></i>About Us</a>
-                                                    <a class=" "
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/privacy-policy"><i
-                                                            class="icon-chevron-right pr-2"></i>Privacy Policy</a>
-                                                    <a class=" "
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/terms-and-service"><i
-                                                            class="icon-chevron-right pr-2"></i>Terms &amp; Service</a>
-                                                    <a class=" "
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/return-policy"><i
-                                                            class="icon-chevron-right pr-2"></i>Return Policy</a>
-                                                    <a class=" "
-                                                        href="https://geniusdevs.com/codecanyon/omnimart40/How-It-Works"><i
-                                                            class="icon-chevron-right pr-2"></i>How It Works</a>
-                                                </div>
-                                            </li> --}}
-
-                                            <li class=""><a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/contact"><i
-                                                        class="icon-chevron-right"></i>Contact</a></li>
+                                            
                                         </ul>
                                     </nav>
                                 </div>
@@ -308,23 +281,24 @@ body_theme1
                                                 @foreach ($categories as $category)
                                                     <li class="has-children">
                                                         <a class="category_search"
-                                                            href="">Women
-                                                            Clothing
+                                                            href="/shop/category/{{ $category->id }}">{{$category->name}}
                                                             <span><i class="icon-chevron-down"></i></span>
                                                         </a>
                                                         <ul id="subcategory_list">
+                                                            @foreach ($category->sub_category as $sub_category)
                                                             <li class="">
                                                                 <a class="subcategory"
-                                                                    href="https://geniusdevs.com/codecanyon/omnimart40/catalog?subcategory=Womens-Underwear">Women&#039;s
-                                                                    Underwear</a>
+                                                                    href="/shop/category/{{ $sub_category->id }}/{{ $category->id }}">{{ $sub_category->name }}</a>
                                                                 <ul id="childcategory_list">
+                                                                    @foreach ($sub_category->child_category as $child_category)
                                                                     <li class="">
                                                                         <a class="childcategory"
-                                                                            href="https://geniusdevs.com/codecanyon/omnimart40/catalog?childcategory=Pajama-Sets">Pajama
-                                                                            Sets</a>
+                                                                            href="/shop/category/{{ $child_category->id }}/{{ $category->id }}/{{ $sub_category->id }}">{{ $child_category->name }}</a>
                                                                     </li>
+                                                                    @endforeach
                                                                 </ul>
                                                             </li>
+                                                            @endforeach
                                                         </ul>
                                                     </li>
                                                 @endforeach
@@ -402,18 +376,18 @@ body_theme1
                         <div class="nav-inner">
                             <nav class="site-menu">
                                 <ul>
-                                    <li class="t-h-dropdown  active">
+                                    <li class="t-h-dropdown  {{ Request::routeIs('user.home') ? 'active':''}}">
                                         <a class="main-link" href="/">Home</a>
                                     </li>
-                                    <li class=""><a href="{{ route('user.shop') }}">Shop</a></li>
-                                    <li class=""><a href="{{ route('user.category') }}">Category</a>
+                                    <li class="{{ Request::routeIs('user.shop') ? 'active':''}}"><a href="{{ route('user.shop') }}">Shop</a></li>
+                                    <li class="{{ Request::routeIs('user.category') ? 'active':''}}"><a href="{{ route('user.category') }}">Category</a>
                                     </li>
-                                    <li class=""><a href="{{ route('user.brand') }}">Brand</a></li>
-                                    <li class=""><a
+                                    <li class="{{ Request::routeIs('user.brand') ? 'active':''}}"><a href="{{ route('user.brand') }}">Brand</a></li>
+                                    <li class="{{ Request::routeIs('user.blog') ? 'active':''}}"><a
                                             href="{{ route('user.blog') }}">Blog</a></li>
-                                    <li class=""><a
-                                            href="https://geniusdevs.com/codecanyon/omnimart40/contact">Contact</a>
-                                    </li>
+                                            {{-- <li class="{{ Request::routeIs('user.blog') ? 'active':''}}"><a
+                                                href="{{ route('user.blog') }}">Contact</a></li> --}}
+                                     
                                 </ul>
                             </nav>
 
@@ -465,7 +439,7 @@ body_theme1
     <!--    announcement banner section end   -->
 
     <!-- Site Footer-->
-    <footer class="site-footer">
+    <footer class="site-footer" style="margin-top: 30px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 col-md-6">
@@ -503,19 +477,14 @@ body_theme1
                     <section class="widget">
                         <h3 class="widget-title">Newsletter</h3>
                         <form class="row subscriber-form"
-                            action="https://geniusdevs.com/codecanyon/omnimart40/subscriber/submit" method="post">
-                            <input type="hidden" name="_token" value="qYRQwOc3pjdT0Bvq9gFiqBQZceM45tq5xC53blMH">
+                            action="{{ route('user.subscribe') }}" method="post">
+                            @csrf
                             <div class="col-sm-12">
                                 <div class="input-group">
                                     <input class="form-control" type="email" name="email"
                                         placeholder="Your e-mail">
                                     <span class="input-group-addon"><i class="icon-mail"></i></span>
                                 </div>
-                                <div aria-hidden="true">
-                                    <input type="hidden" name="b_c7103e2c981361a6639545bd5_1194bb7544"
-                                        tabindex="-1">
-                                </div>
-
                             </div>
                             <div class="col-sm-12">
                                 <button class="btn btn-primary btn-block mt-2" type="submit">
@@ -566,12 +535,41 @@ body_theme1
     <script type="text/javascript" src="{{ asset('assets/front/js/myscript.js') }}"></script>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script type="text/javascript">
         $(document).on('click', '.spiner', function() {
             $('.color-picker').toggleClass('active');
         })
     </script>
+<script>
+     toastr.options = {
+            "closeButton": true,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": true,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "5000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+</script>
 
+@if (session()->has('success'))
+    <script>
+        toastr['success']("{{ session('success') }}")
+    </script>
+@elseif(session()->has('error'))
+<script>
+    toastr['error']("{{ session('error') }}")
+</script>
+@endif
 @yield('footer')
 </body>
 

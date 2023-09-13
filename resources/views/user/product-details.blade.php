@@ -43,10 +43,10 @@
                         <h4 class="mb-2 p-title-main">{{ $product->name }}
                         </h4>
                         <div class="mb-3">
-                            <div class="rating-stars d-inline-block gmr-3">
+                            {{-- <div class="rating-stars d-inline-block gmr-3">
                                 <i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i
                                     class="far fa-star"></i><i class="far fa-star"></i>
-                            </div>
+                            </div> --}}
                             <span class="text-success  d-inline-block">In Stock</span>
                         </div>
 
@@ -63,15 +63,10 @@
                         <form action="">
                             <div class="row align-items-end pb-4">
                                 <div class="col-sm-12">
-                                    <div class="qtySelector product-quantity">
-                                        <input type="text" class="qtyValue cart-amount" value="1">
-                                    </div>
                                     <div class="p-action-button">
                                         <a href="{{ route('user.add_to_cart', ['id' => $product->id]) }}"
                                             class="btn btn-primary m-0 a-t-c-mr" id=""><i
                                                 class="icon-bag"></i><span>Add to Cart</span></a>
-                                        <button class="btn btn-primary m-0" id="but_to_cart"><i
-                                                class="icon-bag"></i><span>Buy Now</span></button>
                                     </div>
                                 </div>
                             </div>
@@ -153,123 +148,14 @@
                     <div class="tab-content card">
                         <div class="tab-pane fade show active" id="description" role="tabpanel"
                             aria-labelledby="description-tab">
-                            {!! $product->description !!}
-                        </div>
-                        <div class="tab-pane fade show" id="specification" role="tabpanel"
-                            aria-labelledby="specification-tab">
-                            <div class="comparison-table">
-                                <table class="table table-bordered">
-                                    <thead class="bg-secondary">
-                                    </thead>
-                                    <tbody>
-                                        <tr class="bg-secondary">
-                                            <th class="text-uppercase">Specifications</th>
-                                            <td><span class="text-medium">Descriptions</span></td>
-                                        </tr>
-                                        <tr>
-                                            <th>Product Type:</th>
-                                            <td>Velvet elegant sleeveless evening dress</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Material:</th>
-                                            <td>Polyester / Spandex</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Lining Material:</th>
-                                            <td>Polyester</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Fabric Type:</th>
-                                            <td>Fleece</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Technics:</th>
-                                            <td>Plain dyed</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Decoration:</th>
-                                            <td>Sequins</td>
-                                        </tr>
-                                        <tr>
-                                            <th>Size:</th>
-                                            <td>S/M/L</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                            {{ $product->description }}
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="container  review-area">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-title">
-                    <h2 class="h3">Latest Reviews</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8">
-                <div class="card p-5">
-                    No Review
-                </div>
-                <div class="row mt-15">
-                    <div class="col-lg-12 text-center">
-
-                    </div>
-                </div>
-
-            </div>
-            <div class="col-md-4 mb-4">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="text-center">
-                            <div class="d-inline align-baseline display-3 mr-1">0</div>
-                            <div class="d-inline align-baseline text-sm text-warning mr-1">
-                                <div class="rating-stars"><i class="far fa-star"></i><i class="far fa-star"></i><i
-                                        class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="pt-3">
-                            <label class="text-medium text-sm">5 stars <span class="text-muted">- 0</span></label>
-                            <div class="progress margin-bottom-1x">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%; height: 2px;"
-                                    aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="text-medium text-sm">4 stars <span class="text-muted">- 0</span></label>
-                            <div class="progress margin-bottom-1x">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%; height: 2px;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="text-medium text-sm">3 stars <span class="text-muted">- 0</span></label>
-                            <div class="progress margin-bottom-1x">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%; height: 2px;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="text-medium text-sm">2 stars <span class="text-muted">- 0</span></label>
-                            <div class="progress margin-bottom-1x">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0%; height: 2px;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <label class="text-medium text-sm">1 star <span class="text-muted">- 0</span></label>
-                            <div class="progress mb-2">
-                                <div class="progress-bar bg-warning" role="progressbar" style="width: 0; height: 2px;"
-                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                        </div>
-                        <div class="pb-2"><a class="btn btn-primary btn-block" href="#" data-bs-toggle="modal"
-                                data-bs-target="#leaveReview"><span>Leave a Review</span></a></div>
-                    </div>
-                </div>
-            </div>
-
-
-        </div>
-    </div>
+    
     <div class="relatedproduct-section container padding-bottom-3x mb-1 s-pt-30">
         <!-- Related Products Carousel-->
         <div class="row">
@@ -332,11 +218,7 @@
                                             href="{{ route('user.product_details', ['slug' => $product1->slug]) }}">
                                             {{ \Illuminate\Support\Str::substr($product1->name, 0, 50) }}
                                         </a></h3>
-                                    <div class="rating-stars">
-                                        <i class='far fa-star'></i><i class='far fa-star'></i><i
-                                            class='far fa-star'></i><i class='far fa-star'></i><i
-                                            class='far fa-star'></i>
-                                    </div>
+                             
                                     <h4 class="product-price">
                                         <del>${{ $product1->previous_price }}</del>
 
@@ -350,65 +232,5 @@
             </div>
         </div>
     </div>
-    <form class="modal fade ratingForm show" action="https://geniusdevs.com/codecanyon/omnimart40/review/submit"
-        method="post" id="leaveReview" tabindex="-1" style="display: block; padding-left: 0px;" aria-modal="true"
-        role="dialog">
-        <input type="hidden" name="_token" value="ym8BLsdAgqNVUjDoWtONp0TP6ANU7nzlSDqonXkK">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Leave a Review</h4>
-                    <button class="close modal_close" type="button" data-bs-dismiss="modal" aria-label="Close"><span
-                            aria-hidden="true">×</span></button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-name">Your Name</label>
-                                <input class="form-control" type="text" id="name" value="{{ Auth::user()->name }}"
-                                    required="">
-                            </div>
-                        </div>
-                        <input type="hidden" name="item_id" value="587">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-email">Your Email</label>
-                                <input class="form-control" type="email" name="email" value="{{ Auth::user()->email }}"
-                                    required="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-subject">Subject</label>
-                                <input class="form-control" type="text" name="subject" id="review-subject"
-                                    required="">
-                            </div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <label for="review-rating">Rating</label>
-                                <select name="rating" class="form-control" id="review-rating">
-                                    <option value="5">5 Stars</option>
-                                    <option value="4">4 Stars</option>
-                                    <option value="3">3 Stars</option>
-                                    <option value="2">2 Stars</option>
-                                    <option value="1">1 Star</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label for="review-message">Review</label>
-                        <textarea class="form-control" name="review" id="review-message" rows="8" required=""></textarea>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-primary" type="submit"><span>Submit Review</span></button>
-                </div>
-            </div>
-        </div>
-    </form>
+ 
 @endsection

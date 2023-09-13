@@ -18,23 +18,24 @@ class LoginController extends Controller
     function login(Request $request): RedirectResponse
     {
         $request->validate([
-            'email_login' => 'required|exists:users,email',
-            'password_login' => 'required',
-        ], [
-            'email_login' => [
-                'required' => 'The email field is required',
-                'exists' => "selected email is invalid"
-            ],
+            'email_login' => 'required|email|exists:users,email',
             'password_login' => [
-                'required' => 'The password field is required',
-            ]
-
+                'required',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            ],
+        ], [
+            'email_login.email' => 'Please enter a valid email address.',
+            'email_login.exists' => 'The email address is not registered.',
+            'password_login.required' => 'The password field is required.',
+            'password_login.min' => 'The password must be at least 8 characters long.',
+            'password_login.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
         ]);
         $user = Auth::attempt(['email' => $request->email_login, 'password' => $request->password_login]);
         if ($user) {
             return redirect()->route('user.dashboard')->with('success', 'Login successfully');
         } else {
-            return redirect()->route('user.login')->with('error', 'Invalid email and password');
+            return redirect()->route('user.register')->with('error', 'Invalid email and password');
         }
     }
 }

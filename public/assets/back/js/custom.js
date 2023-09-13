@@ -207,22 +207,22 @@ $(document).on('click','.remove-menu',function(){
     $(function() {
 
          // editor
-         if($('.text-editor').length > 0) {
+        //  if($('.text-editor').length > 0) {
 
-            $('.text-editor').summernote({
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture', 'video']],
-                    ['view', ['fullscreen']],
-                  ]
-            });
+        //     $('.text-editor').summernote({
+        //         toolbar: [
+        //             ['style', ['style']],
+        //             ['font', ['bold', 'underline', 'clear']],
+        //             ['fontname', ['fontname']],
+        //             ['color', ['color']],
+        //             ['para', ['ul', 'ol', 'paragraph']],
+        //             ['table', ['table']],
+        //             ['insert', ['link', 'picture', 'video']],
+        //             ['view', ['fullscreen']],
+        //           ]
+        //     });
 
-        }
+        // }
 
         // Datatable
         if($('#admin-table').length > 0) {

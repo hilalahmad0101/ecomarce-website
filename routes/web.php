@@ -38,6 +38,8 @@ Route::middleware(['guest'])->group(function () {
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index')->name('user.home');
+    Route::post('/review', 'review')->name('user.review');
+    Route::post('/subscribe', 'subscribe')->name('user.subscribe');
     Route::get('/blog', 'blog')->name('user.blog');
     Route::get('/search/blog', 'blog_search')->name('user.search');
     Route::get('/blog/{id}', 'blog_details')->name('user.blog_details');

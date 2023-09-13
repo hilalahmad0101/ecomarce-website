@@ -14,8 +14,11 @@ use Stripe;
 
 class CheckoutController extends Controller
 {
-    function index(): View
+    function index()
     {
+        if(Cart::whereUserId(auth()->id())->count() <= 0){
+            return redirect()->route('user.shop')->with('error','Your cart is empty');
+        }
         $billing_address = BillingAddress::whereUserId(auth()->id())->first();
         if (!$billing_address) {
             BillingAddress::create([
@@ -34,6 +37,7 @@ class CheckoutController extends Controller
 
     function update_billing_address(Request $request)
     {
+        
         $validate = $request->validate([
             'address1' => 'required',
             'address2' => 'required',
@@ -59,6 +63,9 @@ class CheckoutController extends Controller
 
     function payment()
     {
+        if(Cart::whereUserId(auth()->id())->count() <= 0){
+            return redirect()->route('user.shop')->with('error','Your cart is empty');
+        }
         $billing_address = BillingAddress::whereUserId(auth()->id())->first();
         return view('user.payment', compact('billing_address'));
     }

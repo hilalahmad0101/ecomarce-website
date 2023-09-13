@@ -14,6 +14,7 @@ use App\Models\Faq;
 use App\Models\FaqCategory;
 use App\Models\ManageSite;
 use App\Models\Product;
+use App\Models\Review;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\Subscribe;
@@ -98,6 +99,8 @@ class HomeController extends Controller
     {
         $product = Product::findOrFail($id);
         $cart = Cart::whereUserIdAndProductId(auth()->id(), $id)->first();
+        
+
         if ($cart) {
             $cart->qty = $cart->qty + 1;
             $cart->sub_total = $cart->total * $cart->qty;
@@ -108,7 +111,7 @@ class HomeController extends Controller
             Cart::create([
                 'user_id' => auth()->id(),
                 'product_id' => $id,
-                'total' => $product->current_price,
+                'total' => $number,
                 'sub_total' => $number,
                 'qty' => 1,
             ]);
@@ -237,7 +240,7 @@ class HomeController extends Controller
     {
         $faqs = Faq::where('cat_id', $id)->latest()->get();
         $faq  = FaqCategory::findOrFail($id);
-        return view('user.faqs', compact('faqs','faq'));
+        return view('user.faqs', compact('faqs', 'faq'));
     }
 
     function subscribe(Request $request): RedirectResponse
@@ -265,5 +268,18 @@ class HomeController extends Controller
         ]);
         Contact::create($validate);
         return redirect()->back()->with('success', 'Contact save successfully');
+    }
+
+    function review(Request $request)
+    {
+        $validate = $request->validate([
+            'name' => 'required',
+            'rating' => 'required',
+            'review' => 'required',
+            'product_id' => 'required',
+            'subject' => 'required',
+        ]);
+        Review::create($validate);
+        return redirect()->back()->with('success', 'Review Successfully');
     }
 }

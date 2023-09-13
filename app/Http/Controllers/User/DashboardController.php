@@ -60,6 +60,12 @@ class DashboardController extends Controller
 
     function update_address(Request $request)
     {
+        $request->validate([
+            'address1' => 'required|string|max:255',
+            'address2' => 'nullable|string|max:255',
+            'zip_code' => 'required|string|max:10',
+            'city' => 'required|string|max:255', 
+        ]);
         $address = BillingAddress::whereUserId(auth()->id())->first();
         $address->address1 = $request->address1;
         $address->address2 = $request->address2;

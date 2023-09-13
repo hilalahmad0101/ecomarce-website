@@ -18,26 +18,7 @@
     </div>
     <!-- Page Content-->
     <div class="container padding-bottom-3x mb-1">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="shop-top-filter-wrapper">
-                    <div class="row">
-                        <div class="col-md-10 gd-text-sm-center">
-                            <div class="sptfl">
-                                <div class="shop-sorting">
-                                    <label for="sorting">Sort by:</label>
-                                    <select class="form-control" id="sorting">
-                                        <option value="">All Products</option>
-                                        <option value="low_to_high">Low - High Price</option>
-                                        <option value="high_to_low">High - Low Price</option>
-                                    </select><span class="text-muted">Showing:</span><span>1 - 16 items</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+     
         <div class="row g-3">
 
             <div class="col-lg-9 order-lg-2" id="list_view_ajax">
@@ -92,10 +73,7 @@
                                             href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                             {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                         </a></h3>
-                                    <div class="rating-stars">
-                                        <i class='far fa-star'></i><i class='far fa-star'></i><i class='far fa-star'></i><i
-                                            class='far fa-star'></i><i class='far fa-star'></i>
-                                    </div>
+                               
                                     <h4 class="product-price">
                                         <del>${{ $product->previous_price }}</del>
 

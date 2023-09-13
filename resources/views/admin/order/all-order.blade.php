@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center justify-content-between">
                             <h3 class=" mb-0 bc-title"><b>All Orders</b></h3>
-                            <div class="right">
+                            {{-- <div class="right">
                                 <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/csv/export"
                                     class="btn btn-info btn-sm d-inline-block">CSV Export</a>
                                 <form class="d-inline-block"
@@ -21,7 +21,7 @@
                                     <input type="hidden" value="orders" name="table">
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -30,7 +30,7 @@
                 <div class="card shadow mb-4">
                     <div class="card-body">
 
-                        <form action="https://geniusdevs.com/codecanyon/omnimart40/admin/orders" method="GET">
+                        {{-- <form action="https://geniusdevs.com/codecanyon/omnimart40/admin/orders" method="GET">
                             <div class="row mb-4 justify-content-center">
                                 <div class="col-md-6 col-sm-6 col-lg-4">
                                     <div class="form-group p-0">
@@ -54,7 +54,7 @@
                                         class="btn btn-info py-1">Reset</a>
                                 </div>
                             </div>
-                        </form>
+                        </form> --}}
 
 
                         <div class="gd-responsive-table">
@@ -69,7 +69,7 @@
                                         <th>Total Amount</th>
                                         <th>Payment Status</th>
                                         <th>Order Status</th>
-                                        <th>Actions</th>
+                                        {{-- <th>Actions</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -128,7 +128,7 @@
                                                 </div>
                                             </div>
                                         </td>
-                                        <td>
+                                        {{-- <td>
                                             <div class="action-list">   
                                                 <a class="btn btn-secondary btn-sm"
                                                     href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/invoice/156">
@@ -140,7 +140,7 @@
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
                                             </div>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                     

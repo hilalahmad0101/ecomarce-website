@@ -103,7 +103,7 @@
                                                             <button type="button" class="btn btn-secondary"
                                                                 data-dismiss="modal">Cancel</button>
                                                             <form
-                                                                action="{{ route('admin.category.delete', ['id' => $category->id]) }}"
+                                                                action="{{ route('admin.sub-category.delete', ['id' => $category->id]) }}"
                                                                 class="d-inline btn-ok" method="get">
                                                                 <button type="submit"
                                                                     class="btn btn-danger">Delete</button>

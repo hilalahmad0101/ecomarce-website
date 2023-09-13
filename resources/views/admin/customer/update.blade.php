@@ -61,7 +61,7 @@
                                                 </tr> 
                                                 <tr>
                                                     <th>Total Orders</th>
-                                                    <td>0</td>
+                                                    <td>{{ \App\Models\Order::whereUserId($user->phone)->count() }}</td>
                                                 </tr>
                                                 <tr>
                                                     <th>Joined</th>

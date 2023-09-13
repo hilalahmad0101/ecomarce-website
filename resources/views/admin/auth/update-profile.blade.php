@@ -51,11 +51,17 @@
                                                         name="image" id="file" aria-label="File browser example">
                                                     <span class="file-custom text-left">Upload Image...</span>
                                                 </label>
+                                                @error('image')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="name">User Name *</label>
                                                 <input type="text" name="username" class="form-control" id="name"
                                                     placeholder="User Name" value="{{ Auth::guard('admin')->user()->username }}">
+                                                    @error('username')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
 
@@ -63,18 +69,25 @@
                                                 <label for="email">Email Address *</label>
                                                 <input type="email" name="email" class="form-control" id="email"
                                                     placeholder="Email Address" value="{{ Auth::guard('admin')->user()->email }}">
+                                                    @error('email')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="phone">Phone Number *</label>
                                                 <input type="text" name="phone" class="form-control" id="phone"
                                                     placeholder="Phone Number" value="{{ Auth::guard('admin')->user()->phone }}">
+                                                    @error('phone')
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="phone">Password *</label>
                                                 <input type="password" name="password" class="form-control" id="password"
                                                     placeholder="Enter Password" >
+                                                    
                                             </div>
 
 

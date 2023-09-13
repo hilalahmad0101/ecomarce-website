@@ -20,8 +20,18 @@ class LoginController extends Controller
     function login(Request $request): RedirectResponse
     {
         $request->validate([
-            'email' => 'required|exists:admins',
-            'password' => 'required',
+            'email' => 'required|email|exists:admins,email',
+            'password' => [
+                'required',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            ],
+        ], [
+            'email.email' => 'Please enter a valid email address.',
+            'email.exists' => 'The email address is not registered.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
         ]);
         $admin = Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password]);
         if ($admin) {
@@ -39,6 +49,29 @@ class LoginController extends Controller
     function update_profile(Request $request)
     {
 
+        $request->validate([
+            'username'=>'required|alpha',
+            'email' => 'required|email',
+            'password' => [ 
+                'nullable',
+                'min:8',
+                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+            ],
+            'phone' => [
+                'required',
+                'unique:users',
+                'regex:/^[0-9]{11}$/',
+            ], 
+            'image'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
+        ], [
+            'email.email' => 'Please enter a valid email address.',
+            'phone.required' => 'The phone number field is required.',
+            'phone.regex' => 'Please enter a valid 11-digit phone number.',
+            'phone.unique' => 'The phone number is already in use.',
+            'password.required' => 'The password field is required.',
+            'password.min' => 'The password must be at least 8 characters long.',
+            'password.regex' => 'The password must contain at least one uppercase letter, one lowercase letter, one number, and one special character.',
+        ]);
         $admin = Admin::findOrFail(Auth::guard('admin')->user()->id);
         $filename = '';
         if ($request->file('image')) {
@@ -51,7 +84,7 @@ class LoginController extends Controller
         $admin->email = $request->email;
         $admin->phone = $request->phone;
         $admin->image = $filename;
-        $admin->password = Hash::make($request->password);
+        $admin->password = Hash::make($request->password) ?? $admin->password;
         $admin->save();
         return redirect()->back()->with('success', 'Profile update successfully');
     }

@@ -194,25 +194,6 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6">
-                        <div class="card card-stats card-round">
-                            <div class="card-body ">
-                                <div class="row align-items-center">
-                                    <div class="col-icon">
-                                        <div class="icon-big text-center icon-info bubble-shadow-small">
-                                            <i class="far fa-check-circle"></i>
-                                        </div>
-                                    </div>
-                                    <div class="col col-stats ml-3 ml-sm-0">
-                                        <div class="numbers">
-                                            <p class="mb-0"><b>Total Reviews</b></p>
-                                            <h4 class="card-title">3</h4>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
 
                     <div class="col-xl-3 col-md-6">
                         <div class="card card-stats card-round">
@@ -266,7 +247,7 @@
                                     <div class="col col-stats ml-3 ml-sm-0">
                                         <div class="numbers">
                                             <p class="mb-0"><b>Total Subscribers</b></p>
-                                            <h4 class="card-title">68</h4>
+                                            <h4 class="card-title">{{ \App\Models\Subscribe::count() }}</h4>
                                         </div>
                                     </div>
                                 </div>

@@ -29,7 +29,7 @@
                                 <div class="form-group">
                                     <label for="reg-email">E-mail Address</label>
                                     <input class="form-control" type="email" name="email_login" placeholder="E-mail Address"
-                                        id="reg-email" value="">
+                                        id="reg-email" value="{{ old('email_login') }}">
                                         @error('email_login')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -39,12 +39,12 @@
                                 <div class="form-group">
                                     <label for="reg-pass">Password</label>
                                     <input class="form-control" type="password" name="password_login" placeholder="Password"
-                                        id="reg-pass">
+                                        id="login-pass">
                                         @error('password_login')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                 </div>
-
+                                {{-- <input type="checkbox" class="checkbox" name="" id="show-password-checkbox"> <label for="show-password-checkbox">Show password</label> --}}
                             </div>
                             <div class="col-12 text-center">
                                 <button class="btn btn-primary margin-bottom-none"
@@ -65,7 +65,7 @@
                                 <div class="form-group">
                                     <label for="reg-fn">First Name</label>
                                     <input class="form-control" type="text" name="first_name" placeholder="First Name"
-                                        id="reg-fn" value="">
+                                        id="reg-fn" value="{{ old('first_name') }}">
                                         @error('first_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -75,7 +75,7 @@
                                 <div class="form-group">
                                     <label for="reg-ln">Last Name</label>
                                     <input class="form-control" type="text" name="last_name" placeholder="Last Name"
-                                        id="reg-ln" value="">
+                                        id="reg-ln" value="{{ old('last_name') }}">
                                         @error('last_name')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -85,7 +85,7 @@
                                 <div class="form-group">
                                     <label for="reg-email">E-mail Address</label>
                                     <input class="form-control" type="email" name="email" placeholder="E-mail Address"
-                                        id="reg-email" value="">
+                                        id="reg-email" value="{{ old('email') }}">
                                         @error('email')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -95,7 +95,7 @@
                                 <div class="form-group">
                                     <label for="reg-phone">Phone Number</label>
                                     <input class="form-control" name="phone" type="text" placeholder="Phone Number"
-                                        id="reg-phone" value="">
+                                        id="reg-phone" value="{{ old('phone') }}">
                                         @error('phone')
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
@@ -130,4 +130,15 @@
             </div>
         </div>
     </div>
+    <script>
+        const passwordInput = document.getElementById('login-pass');
+        const showPasswordCheckbox = document.getElementById('show-password-checkbox');
+    
+        showPasswordCheckbox.addEventListener('change', function () {
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
+    
+    
+    
 @endsection

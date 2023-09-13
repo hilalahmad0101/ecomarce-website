@@ -1,9 +1,12 @@
 <div class="main-header ">
     <!-- Logo Header -->
     <div class="logo-header">
-
+        @php
+        $settings=\App\Models\ManageSite::where('key','media')->first();
+        $setting_value=json_decode($settings->value);
+    @endphp
         <a href="/" class="logo">
-            <img src="https://geniusdevs.com/codecanyon/omnimart40/assets/images/1634218044logoforsite.png"
+            <img src="{{ asset('storage') }}/{{ $setting_value->logo }}"
                 alt="navbar brand" class="navbar-brand">
         </a>
         <button class="navbar-toggler sidenav-toggler ml-auto" type="button" data-toggle="collapse"

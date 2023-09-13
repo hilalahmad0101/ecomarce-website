@@ -33,6 +33,9 @@ Address
                                     <label for="account-fn">Address 1</label>
                                     <input class="form-control"  name="address1" type="text" id="account-fn"
                                         value="{{ $address->address1 }}">
+                                    @error('address1')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -40,6 +43,9 @@ Address
                                     <label for="account-ln">Address 1</label>
                                     <input class="form-control" type="text" name="address2" id="account-ln"
                                         value="{{ $address->address2}}">
+                                        @error('address2')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -47,6 +53,9 @@ Address
                                     <label for="account-email">Zip Code</label>
                                     <input class="form-control" name="zip_code" type="text" id="account-email"
                                         value="{{ $address->zip_code }}">
+                                        @error('zip_code')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">
@@ -54,6 +63,9 @@ Address
                                     <label for="account-phone">City</label>
                                     <input class="form-control" name="city" type="text" id="account-phone"
                                         value="{{ $address->city }}">
+                                        @error('city')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="col-md-6">

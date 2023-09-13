@@ -32,7 +32,7 @@
                                         <th>Order Status</th>
                                         <th>Payment Status</th>
                                         <th>Date Purchased</th>
-                                        <th>Action</th>
+                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -52,10 +52,10 @@
                                         </td>
 
                                         <td>{{ \Carbon\Carbon::now()->format('D/M/Y',strtotime($order->created_at)) }}</td>
-                                        <td>
+                                        {{-- <td>
                                             <a href="https://geniusdevs.com/codecanyon/omnimart40/user/order/invoice/155"
                                                 class="btn btn-info btn-sm">Invoice</a>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                     @endforeach
                                     

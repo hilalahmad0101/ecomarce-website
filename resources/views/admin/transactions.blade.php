@@ -14,7 +14,7 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center justify-content-between">
                             <h3 class=" mb-0 bc-title"><b>Transactions</b></h3>
-                            <div class="right">
+                            {{-- <div class="right">
                                 <a href="https://geniusdevs.com/codecanyon/omnimart40/admin/transaction/csv/export"
                                     class="btn btn-info btn-sm d-inline-block">CSV Export</a>
                                 <form class="d-inline-block"
@@ -23,7 +23,7 @@
                                     <input type="hidden" value="transactions" name="table">
                                     <button class="btn btn-danger btn-sm">Delete</button>
                                 </form>
-                            </div>
+                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -55,8 +55,7 @@
                                                 {{ $transaction->users->name }}
                                             </td>
                                             <td>
-                                                <a
-                                                    href="https://geniusdevs.com/codecanyon/omnimart40/admin/order/invoice/156">{{ $transaction->order_id }}</a>
+                                                {{ $transaction->order_id }}
                                             </td>
                                             <td>
                                                 <p class="badge badge-dark">{{ $transaction->order_status }}</p>

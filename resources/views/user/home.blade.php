@@ -61,8 +61,8 @@
                     <div class="col-lg-3 col-sm-6 text-center mb-30">
                         <div class="single-service single-service2">
                             <img src="{{ asset('storage') }}/{{ $service->image }}" alt="Shipping">
-                            <div class="content">
-                                <h6 class="mb-2">{{ $service->title }}</h6>
+                            <div class="content ml-3">
+                                <h6 class="mb-2 ">{{ $service->title }}</h6>
                                 <p class="text-sm text-muted mb-0">{{ $service->sub_title }}</p>
                             </div>
                         </div>
@@ -132,16 +132,12 @@
                                         </div>
                                     </div>
                                     <div class="product-card-body">
-                                        <div class="product-category"><a href="">{{ $categories1->name }}</a></div>
+                                        <div class="product-category"><a href="/shop/category/{{ $categories1->slug }}">{{ $categories1->name }}</a></div>
                                         <h3 class="product-title"><a
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                        <div class="rating-stars">
-                                            <i class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i>
-                                        </div>
+                                       
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 
@@ -254,17 +250,13 @@
                                         </div>
                                     </div>
                                     <div class="product-card-body">
-                                        <div class="product-category"><a href="">{{ $categories2->name }}</a>
+                                        <div class="product-category"><a href="/shop/category/{{ $categories2->slug }}">{{ $categories2->name }}</a>
                                         </div>
                                         <h3 class="product-title"><a
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                        <div class="rating-stars">
-                                            <i class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i>
-                                        </div>
+                                       
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 
@@ -376,17 +368,13 @@
                                         </div>
                                     </div>
                                     <div class="product-card-body">
-                                        <div class="product-category"><a href="">{{ $categories3->name }}</a>
+                                        <div class="product-category"><a href="/shop/category/{{ $categories3->slug }}">{{ $categories3->name }}</a>
                                         </div>
                                         <h3 class="product-title"><a
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                        <div class="rating-stars">
-                                            <i class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i><i class='far fa-star'></i><i
-                                                class='far fa-star'></i>
-                                        </div>
+                                       
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 

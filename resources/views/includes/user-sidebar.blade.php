@@ -34,8 +34,6 @@
             <a class="list-group-item  with-badge {{ Request::routeIs('user.wishlist') ? 'active':''}}"
                 href="{{ route('user.wishlist') }}"><i
                     class="icon-heart"></i>Wishlist<span class="badge badge-default badge-pill">{{ count(Auth::user()->wishlists) }}</span></a>
-            <a class="list-group-item  with-badge " data-bs-toggle="modal" data-bs-target=".modal"
-                href="javascript:;"><i class="icon-trash"></i>Delete Account</a>
             <a class="list-group-item with-badge"
                 href="{{ route('user.logout') }}"><i class="icon-log-out"></i>Log
                 out</a>

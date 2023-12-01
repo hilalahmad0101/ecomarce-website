@@ -14,6 +14,11 @@ class DatabaseSeeder extends Seeder
     {
         \App\Models\Admin::factory(1)->create();
 
+        $this->call([
+            ManageSitesTableSeeder::class,
+            CategoriesTableSeeder::class,
+        ]);
+
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',

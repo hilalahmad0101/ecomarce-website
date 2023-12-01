@@ -137,7 +137,7 @@
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                       
+
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 
@@ -256,7 +256,7 @@
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                       
+
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 
@@ -374,7 +374,7 @@
                                                 href="{{ route('user.product_details', ['slug' => $product->slug]) }}">
                                                 {{ \Illuminate\Support\Str::substr($product->name, 0, 50) }}
                                             </a></h3>
-                                       
+
                                         <h4 class="product-price">
                                             <del>${{ $product->previous_price }}</del>
 

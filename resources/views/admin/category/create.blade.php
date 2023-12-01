@@ -63,15 +63,6 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Slug *</label>
-                                                <input type="text" name="slug" class="form-control" id="slug"
-                                                    placeholder="Enter Slug" value="">
-                                                @error('slug')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
                                                 <label for="meta_keywords">Meta Keywords
                                                 </label>
                                                 <input type="text" name="meta_keyword" class="tags" id="meta_keywords"

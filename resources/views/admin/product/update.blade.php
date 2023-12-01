@@ -44,14 +44,7 @@
                                             <span class="text-danger">{{ $message }}</span>
                                         @enderror
                                     </div>
-                                    <div class="form-group">
-                                        <label for="slug">Slug *</label>
-                                        <input type="text" name="slug" class="form-control" id="slug"
-                                            placeholder="Enter Slug" value="{{ $product->slug }}">
-                                        @error('slug')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
+
                                 </div>
                             </div>
                             <div class="card">
@@ -70,7 +63,7 @@
                                         </label>
                                         <br>
                                         <span class="mt-1 text-info">Image Size Should Be 800 x 800. or square size</span>
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                             <div class="card">
@@ -176,7 +169,7 @@
 
                                     <div class="form-group">
                                         <label for="category_id">Select Category *</label>
-                                        <select name="cat_id" id="category_id" 
+                                        <select name="cat_id" id="category_id"
                                             class="form-control">
                                             <option value="" selected>Select One</option>
                                             @foreach ($categories as $category)
@@ -190,7 +183,7 @@
 
                                     <div class="form-group">
                                         <label for="subcategory_id">Select Sub Category </label>
-                                        <select name="sub_cat_id" id="subcategory_id" 
+                                        <select name="sub_cat_id" id="subcategory_id"
                                             class="form-control">
                                             <option value="">Select One</option>
                                         </select>
@@ -264,7 +257,7 @@
             })
         })
         }, 2000);
-      
+
 
         setTimeout(() => {
             $("#subcategory_id").on('change', function() {
@@ -283,6 +276,6 @@
         })
         }, 3000);
 
-      
+
     </script>
 @endsection

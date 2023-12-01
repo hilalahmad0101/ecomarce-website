@@ -26,7 +26,6 @@ class SubCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:sub_categories',
-            'slug' => 'required|unique:sub_categories',
             'cat_id' => 'required|exists:categories,id'
         ]);
 
@@ -41,13 +40,12 @@ class SubCategoryController extends Controller
     {
         $sub_category = SubCategory::findOrFail($id);
         $categories = Category::latest()->get();
-        return view('admin.sub-category.update', compact('sub_category','categories'));
+        return view('admin.sub-category.update', compact('sub_category', 'categories'));
     }
     function update(Request $request, $id): RedirectResponse
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
             'cat_id' => 'required|exists:categories,id'
         ]);
 

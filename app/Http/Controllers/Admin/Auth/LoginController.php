@@ -24,7 +24,7 @@ class LoginController extends Controller
             'password' => [
                 'required',
                 'min:8',
-                'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
+                // 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
             ],
         ], [
             'email.email' => 'Please enter a valid email address.',
@@ -52,7 +52,7 @@ class LoginController extends Controller
         $request->validate([
             'username'=>'required|alpha',
             'email' => 'required|email',
-            'password' => [ 
+            'password' => [
                 'nullable',
                 'min:8',
                 'regex:/^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/',
@@ -61,7 +61,7 @@ class LoginController extends Controller
                 'required',
                 'unique:users',
                 'regex:/^[0-9]{11}$/',
-            ], 
+            ],
             'image'=>'nullable|image|mimes:jpeg,png,jpg,gif|max:2048'
         ], [
             'email.email' => 'Please enter a valid email address.',

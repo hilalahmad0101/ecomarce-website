@@ -42,16 +42,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="slug">Slug *</label>
-                                                <input type="text" name="slug" class="form-control" id="slug"
-                                                    placeholder="Enter Slug" value="">
-                                                @error('slug')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label for="slug">Slug *</label>
+                                                <label for="slug">Parent Category *</label>
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="">Select Category</option>
                                                     @foreach ($categories as $category)

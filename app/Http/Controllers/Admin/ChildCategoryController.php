@@ -28,7 +28,6 @@ class ChildCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:child_categories',
-            'slug' => 'required|unique:child_categories',
             'cat_id' => 'required|exists:categories,id',
             'sub_cat_id' => 'required|exists:sub_categories,id'
         ]);
@@ -52,7 +51,6 @@ class ChildCategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
             'cat_id' => 'required|exists:categories,id',
             'sub_cat_id' => 'required|exists:sub_categories,id'
         ]);

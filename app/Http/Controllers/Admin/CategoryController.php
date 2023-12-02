@@ -25,7 +25,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required|unique:categories',
-            'slug' => 'required|unique:categories',
             'image' => 'required|image|mimes:jpg,png,jpeg|max:2096',
             'meta_keyword' => 'required',
             'meta_description' => 'required'
@@ -54,7 +53,6 @@ class CategoryController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
             'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
             'meta_keyword' => 'required',
             'meta_description' => 'required'

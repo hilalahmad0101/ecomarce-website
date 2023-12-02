@@ -62,14 +62,7 @@
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="slug">Slug *</label>
-                                                <input type="text" name="slug" class="form-control" id="slug"
-                                                    placeholder="Enter Slug" value="">
-                                                @error('slug')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div> 
+
                                             <div class="form-group">
                                                 <button type="submit" class="btn btn-secondary ">Submit</button>
                                             </div>

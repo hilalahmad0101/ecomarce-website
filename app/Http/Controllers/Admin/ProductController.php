@@ -12,6 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Str;
 
 class ProductController extends Controller
 {
@@ -32,7 +33,6 @@ class ProductController extends Controller
 
         $request->validate([
             'name' => 'required|unique:products',
-            'slug' => 'required|unique:products',
             'featured_image' => 'required|image|mimes:jpg,png,jpeg|max:2096',
             'short_description' => 'required',
             'description' => 'required',
@@ -58,7 +58,7 @@ class ProductController extends Controller
 
         $product = new Product();
         $product->name = $request->name;
-        $product->slug = $request->slug;
+        $product->slug = Str::slug($request->name);
         $product->featured_image = $filename;
         $product->images = json_encode(['', '']);
         $product->short_description = $request->short_description;
@@ -88,11 +88,10 @@ class ProductController extends Controller
     {
         $request->validate([
             'name' => 'required',
-            'slug' => 'required',
             'featured_image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
             'short_description' => 'required',
             'description' => 'required',
-            'tags' => 'required', 
+            'tags' => 'required',
             'meta_keyword' => 'required',
             'meta_description' => 'required',
             'current_price' => 'required',
@@ -115,7 +114,7 @@ class ProductController extends Controller
 
 
         $product->name = $request->name;
-        $product->slug = $request->slug;
+        $product->slug = Str::slug($request->name);
         $product->featured_image = $filename;
         $product->images = json_encode(['', '']);
         $product->short_description = $request->short_description;

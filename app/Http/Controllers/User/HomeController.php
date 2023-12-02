@@ -27,12 +27,17 @@ class HomeController extends Controller
 {
     function index(): View
     {
-        $categories1 = Category::skip(0)->limit(1)->latest()->first();
-        $categories2 = Category::skip(1)->limit(1)->latest()->first();
-        $categories3 = Category::skip(2)->limit(1)->latest()->first();
-        $categories4 = Category::skip(3)->limit(1)->latest()->first();
+        $categories = Category::latest()->take(4)->get();
         $brands1 = Brand::limit(3)->latest()->get();
         $brands2 = Brand::latest()->get();
+
+        // Access individual categories as needed
+        $categories1 = $categories->get(0);
+        $categories2 = $categories->get(1);
+        $categories3 = $categories->get(2);
+        $categories4 = $categories->get(3);
+
+
         $categories = Category::latest()->get();
         $services = Service::limit(4)->latest()->get();
         $blogs = Blog::limit(10)->latest()->get();
@@ -40,7 +45,6 @@ class HomeController extends Controller
 
         $home_page = ManageSite::where('key', 'home_page')->first();
         $home_page_value = json_decode($home_page->value);
-
         $first_three_column = ManageSite::where('key', 'first_three_column')->first();
         $first_three_column_value = json_decode($first_three_column->value);
 
@@ -69,15 +73,21 @@ class HomeController extends Controller
 
     function add_to_wishlist($id): RedirectResponse
     {
+        // instead of this
+        $wishlist = Wishlist::where("user_id", auth()->id())->where("product_id", $id)->first();
+        $wishlist = Wishlist::where(["user_id" => auth()->id(), "product_id" => $id])->first();
+
+        // do this
         $wishlist = Wishlist::whereUserIdAndProductId(auth()->id(), $id)->first();
+
         if ($wishlist) {
-            return redirect()->back()->with('success', 'Product already in wishlist');
+            return redirect()->back()->with('success', 'Product is already in wishlist');
         } else {
             Wishlist::create([
                 'user_id' => auth()->id(),
                 'product_id' => $id
             ]);
-            return redirect()->back()->with('success', 'Product add to successfully wishlist');
+            return redirect()->back()->with('success', 'Product added to successfully wishlist');
         }
     }
 
@@ -99,7 +109,7 @@ class HomeController extends Controller
     {
         $product = Product::findOrFail($id);
         $cart = Cart::whereUserIdAndProductId(auth()->id(), $id)->first();
-        
+
 
         if ($cart) {
             $cart->qty = $cart->qty + 1;

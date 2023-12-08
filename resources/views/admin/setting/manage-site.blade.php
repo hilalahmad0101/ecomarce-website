@@ -143,7 +143,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 1 *</label>
-                                                                    <input type="text" name="url1"
+                                                                    <input type="url" name="url1"
                                                                         class="form-control" id="url1"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $home_page_value->url1 }}">
@@ -186,7 +186,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 2 *</label>
-                                                                    <input type="text" name="url2"
+                                                                    <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $home_page_value->url2 }}">
@@ -372,7 +372,7 @@
                                                                     <button type="submit"
                                                                         class="btn btn-secondary ">Submit</button>
                                                                 </div>
-                                                            </form> 
+                                                            </form>
                                                         </div>
                                                         <div id="seo" class="tab-pane"><br>
                                                             <form action="{{ route('admin.manage-site.seo') }}"
@@ -456,13 +456,12 @@
                                                                                                 name="email"
                                                                                                 class="form-control"
                                                                                                 id="email"
-                                                                                                placeholder="Store Email"
+                                                                                                placeholder="Email"
                                                                                                 value="{{ $footer_value->email }}">
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="email">Store
-                                                                                                Email *</label>
-                                                                                            <input type="text"
+                                                                                            <label for="email">Store Facebook *</label>
+                                                                                            <input type="url"
                                                                                                 name="facebook"
                                                                                                 class="form-control"
                                                                                                 id="facebook"
@@ -470,9 +469,8 @@
                                                                                                 value="{{ $footer_value->facebook }}">
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="email">Store
-                                                                                                Email *</label>
-                                                                                            <input type="text"
+                                                                                            <label for="email">Store Twitter/X *</label>
+                                                                                            <input type="url"
                                                                                                 name="twitter"
                                                                                                 class="form-control"
                                                                                                 id="twitter"
@@ -481,9 +479,8 @@
                                                                                         </div>
 
                                                                                         <div class="form-group">
-                                                                                            <label for="email">Store
-                                                                                                Email *</label>
-                                                                                            <input type="text"
+                                                                                            <label for="email">Store Youtube *</label>
+                                                                                            <input type="url"
                                                                                                 name="youtube"
                                                                                                 class="form-control"
                                                                                                 id="youtube"
@@ -491,9 +488,8 @@
                                                                                                 value="{{ $footer_value->youtube }}">
                                                                                         </div>
                                                                                         <div class="form-group">
-                                                                                            <label for="email">Store
-                                                                                                Email *</label>
-                                                                                            <input type="text"
+                                                                                            <label for="email">Store Linkedin *</label>
+                                                                                            <input type="url"
                                                                                                 name="linkedin"
                                                                                                 class="form-control"
                                                                                                 id="linkedin"
@@ -613,7 +609,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 2 *</label>
-                                                                    <input type="text" name="url2"
+                                                                    <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $first_three_column_value->url2 }}">
@@ -764,7 +760,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 2 *</label>
-                                                                    <input type="text" name="url2"
+                                                                    <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $second_three_column_value->url2 }}">
@@ -913,7 +909,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 2 *</label>
-                                                                    <input type="text" name="url2"
+                                                                    <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $four_three_column_value->url2 }}">
@@ -1062,7 +1058,7 @@
                                                                 </div>
                                                                 <div class="form-group">
                                                                     <label for="url1">URL 2 *</label>
-                                                                    <input type="text" name="url2"
+                                                                    <input type="url" name="url2"
                                                                         class="form-control" id="url2"
                                                                         placeholder="Enter Url"
                                                                         value="{{ $third_two_column_value->url2 }}">

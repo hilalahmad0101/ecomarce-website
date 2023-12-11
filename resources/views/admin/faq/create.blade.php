@@ -42,7 +42,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label for="details">Meta Description
+                                                <label for="details">Description
                                                 </label>
                                                 <textarea name="details" id="details" class="form-control" rows="5"
                                                     placeholder="Enter Meta Description"></textarea>

@@ -18,7 +18,7 @@ class FaqCategory extends Model
         'meta_keyword',
         'meta_description',
     ];
-    
+
     function faqs() : HasMany {
         return $this->hasMany(Faq::class,'cat_id');
     }

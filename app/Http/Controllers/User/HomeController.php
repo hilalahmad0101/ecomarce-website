@@ -250,11 +250,10 @@ class HomeController extends Controller
         return view('user.faq-category', compact('faq_categories'));
     }
 
-    function faq_by_category($id): View
+    function faq_by_category($slug): View
     {
-        $faqs = Faq::where('cat_id', $id)->latest()->get();
-        $faq  = FaqCategory::findOrFail($id);
-        return view('user.faqs', compact('faqs', 'faq'));
+        $faqcategory  = FaqCategory::where('slug',$slug)->first();
+        return view('user.faqs', compact('faqcategory'));
     }
 
     function subscribe(Request $request): RedirectResponse

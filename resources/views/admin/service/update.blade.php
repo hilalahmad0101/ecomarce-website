@@ -31,7 +31,7 @@
                                 <div class="row justify-content-center">
                                     <div class="col-lg-12">
                                         <form class="admin-form"
-                                            action="{{ route('admin.service.store',['id'=>$service->id]) }}"
+                                            action="{{ route('admin.service.update',['id'=>$service->id]) }}"
                                             method="POST" enctype="multipart/form-data">
                                             @csrf
                                             <div class="form-group">
@@ -49,7 +49,7 @@
                                                     <input type="file" accept="image/*" class="upload-photo"
                                                         name="image" id="file" aria-label="File browser example">
                                                     <span class="file-custom text-left">Upload Image...</span>
-                                                </label> 
+                                                </label>
                                             </div>
                                             <div class="form-group">
                                                 <label for="title">Title *</label>

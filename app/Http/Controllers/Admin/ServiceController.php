@@ -49,15 +49,14 @@ class ServiceController extends Controller
         $request->validate([
             'title' => 'required',
             'details' => 'required',
-            'image' => '',
+            'image' => 'nullable|image|mimes:jpg,png,jpeg|max:2096',
         ]);
         $service = Service::findOrFail($id);
-        $filename = '';
+        $filename = $service->image;
         if ($request->file('image')) {
             $filename = $request->file('image')->store('service', 'public');
-        } else {
-            $filename = $request->image;
         }
+
         $service->image = $filename;
         $service->title = $request->title;
         $service->details = $request->details;

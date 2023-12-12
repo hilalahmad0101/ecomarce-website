@@ -125,7 +125,9 @@ Route::prefix('admin')->group(function () {
             Route::post('/blog/store', 'store')->name('admin.blog.store');
             Route::get('/blog/edit/{id}', 'edit')->name('admin.blog.edit');
             Route::post('/blog/update/{id}', 'update')->name('admin.blog.update');
+            Route::post('/upload/image', 'uploadImage')->name('admin.blog.uploadImage');
             Route::get('/blog/delete/{id}', 'delete')->name('admin.blog.delete');
+
         });
 
         Route::controller(BlogController::class)->group(function () {
@@ -189,6 +191,6 @@ Route::prefix('admin')->group(function () {
             Route::post('/customers/{id}','update')->name('admin.customer.update');
             Route::get('/customers/{id}','delete')->name('admin.customer.delete');
         });
- 
+
     });
 });

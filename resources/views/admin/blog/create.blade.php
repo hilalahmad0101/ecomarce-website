@@ -3,6 +3,7 @@
     Blog
 @endsection
 @section('content')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <div class="content">
         <div class="page-inner">
             <div class="container-fluid">
@@ -11,8 +12,7 @@
                     <div class="card-body">
                         <div class="d-sm-flex align-items-center justify-content-between">
                             <h3 class=" mb-0 bc-title"><b>Create Blog</b> </h3>
-                            <a class="btn btn-primary btn-sm"
-                                href="{{ route('admin.blog.index') }}"><i
+                            <a class="btn btn-primary btn-sm" href="{{ route('admin.blog.index') }}"><i
                                     class="fas fa-chevron-left"></i> Back</a>
                         </div>
                     </div>
@@ -26,11 +26,10 @@
                                 <!-- Nested Row within Card Body -->
                                 <div class="row justify-content-center">
                                     <div class="col-lg-12">
-                                        <form class="admin-form"
-                                            action="{{ route('admin.blog.store') }}" method="POST"
+                                        <form class="admin-form" action="{{ route('admin.blog.store') }}" method="POST"
                                             enctype="multipart/form-data">
 
-                                           @csrf
+                                            @csrf
 
                                             <div class="form-group">
                                                 <label for="name">Set Image *</label>
@@ -50,15 +49,15 @@
                                                     <span class="file-custom text-left">Upload Image...</span>
                                                 </label>
                                                 @error('image')
-                                                    <span class="text-danger">{{$message}}</span>
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="form-group">
                                                 <label for="title">Title *</label>
                                                 <input type="text" name="title" class="form-control" id="title"
                                                     placeholder="Enter Title" value="">
-                                                    @error('title')
-                                                    <span class="text-danger">{{$message}}</span>
+                                                @error('title')
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
@@ -67,20 +66,36 @@
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="" selected disabled>Select Category</option>
                                                     @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('image')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="details">Details *</label>
                                                 <textarea name="description" id="details" class="form-control text-editor" rows="5" placeholder="Enter Details"></textarea>
                                                 @error('description')
-                                                <span class="text-danger">{{$message}}</span>
-                                            @enderror
+                                                    <span class="text-danger">{{ $message }}</span>
+                                                @enderror
+                                                <script>
+                                                    ClassicEditor
+                                                        .create(document.querySelector('#details'), {
+                                                            // Add image upload configuration
+                                                            ckfinder: {
+                                                                uploadUrl: '{{ route('admin.blog.uploadImage') . '?_token=' . csrf_token() }}',
+                                                            },
+                                                        })
+                                                        .then(editor => {
+                                                            console.log(editor);
+                                                        })
+                                                        .catch(error => {
+                                                            console.error(error);
+                                                        });
+                                                </script>
+
                                             </div>
 
                                             <div class="form-group">
@@ -88,8 +103,8 @@
                                                 </label>
                                                 <input type="text" name="tags" class="tags" id="tags"
                                                     placeholder="Tags" value="">
-                                                    @error('tags')
-                                                    <span class="text-danger">{{$message}}</span>
+                                                @error('tags')
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
@@ -98,8 +113,8 @@
                                                 </label>
                                                 <input type="text" name="meta_keywords" class="tags" id="meta_keywords"
                                                     placeholder="Enter Meta Keywords" value="">
-                                                    @error('meta_keywords')
-                                                    <span class="text-danger">{{$message}}</span>
+                                                @error('meta_keywords')
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
@@ -108,8 +123,8 @@
                                                 </label>
                                                 <textarea name="meta_description" id="meta_description" class="form-control" rows="5"
                                                     placeholder="Enter Meta Description"></textarea>
-                                                    @error('meta_description')
-                                                    <span class="text-danger">{{$message}}</span>
+                                                @error('meta_description')
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 

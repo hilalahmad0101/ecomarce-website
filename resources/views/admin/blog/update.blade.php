@@ -3,6 +3,7 @@
     Update Blog
 @endsection
 @section('content')
+    <script src="https://cdn.ckeditor.com/ckeditor5/40.2.0/classic/ckeditor.js"></script>
     <div class="content">
         <div class="page-inner">
             <div class="container-fluid">
@@ -62,9 +63,8 @@
                                                 <select name="cat_id" id="cat_id" class="form-control">
                                                     <option value="" selected disabled>Select Category</option>
                                                     @foreach ($categories as $category)
-                                                        <option value="{{ $category->id }}"
-                                                            @selected($blog->cat_id ==
-                                                            $category->id)>{{ $category->name }}</option>
+                                                        <option value="{{ $category->id }}" @selected($blog->cat_id == $category->id)>
+                                                            {{ $category->name }}</option>
                                                     @endforeach
                                                 </select>
                                                 @error('image')
@@ -78,6 +78,21 @@
                                                 @error('description')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
+                                                <script>
+                                                    ClassicEditor
+                                                        .create(document.querySelector('#details'), {
+                                                            // Add image upload configuration
+                                                            ckfinder: {
+                                                                uploadUrl: '{{ route('admin.blog.uploadImage') . '?_token=' . csrf_token() }}',
+                                                            },
+                                                        })
+                                                        .then(editor => {
+                                                            console.log(editor);
+                                                        })
+                                                        .catch(error => {
+                                                            console.error(error);
+                                                        });
+                                                </script>
                                             </div>
 
                                             <div class="form-group">

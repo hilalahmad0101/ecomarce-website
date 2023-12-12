@@ -7,6 +7,7 @@ use App\Models\BlogCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Str;
 
 class BlogCategoryController extends Controller
 {
@@ -23,9 +24,11 @@ class BlogCategoryController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required|unique:blog_categories',
-            'slug' => 'required|unique:blog_categories',
         ]);
-        BlogCategory::create($validate);
+        BlogCategory::create([
+            'name'=>$request->name,
+            'slug'=>Str::slug($request->name),
+        ]);
         return redirect()->route('admin.blog-category.index')->with('success', 'Faq category add successfully');
     }
     function edit($id): View
@@ -37,9 +40,11 @@ class BlogCategoryController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required',
-            'slug' => 'required',
         ]);
-        BlogCategory::where('id', $id)->update($validate);
+        BlogCategory::where('id', $id)->update([
+            'name'=>$request->name,
+            'slug'=>Str::slug($request->name),
+        ]);
         return redirect()->route('admin.blog-category.index')->with('success', 'Faq category update successfully');
     }
     function delete($id): RedirectResponse

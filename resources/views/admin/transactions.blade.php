@@ -44,7 +44,7 @@
                                         <th>Order Status</th>
                                         <th>Payment Status</th>
                                         <th>Total Amount</th>
-                                        <th>Action</th>
+                                        {{-- <th>Action</th> --}}
                                     </tr>
                                 </thead>
 
@@ -52,7 +52,7 @@
                                     @foreach ($transactions as $transaction)
                                         <tr id="transaction-bulk-delete">
                                             <td>
-                                                {{ $transaction->users->name }}
+                                                {{ $transaction->users->email }}
                                             </td>
                                             <td>
                                                 {{ $transaction->order_id }}
@@ -64,18 +64,18 @@
                                                 <p class="badge badge-primary">{{ $transaction->payment_status }}</p>
                                             </td>
                                             <td>
-                                                ${{ $transaction->total_amount }}
+                                                ${{ number_format($transaction->total_amount,2) }}
 
                                             </td>
-                                            <td>
+                                            {{-- <td>
                                                 <div class="action-list">
                                                     <a class="btn btn-danger btn-sm " data-toggle="modal"
                                                         data-target="#confirm-delete" href="javascript:;"
-                                                        data-href="{{ route('admin.transactions.delete',['id'=>$transaction->id]) }}">
+                                                        data-href="{{ route('admin.transactions.delete', ['id' => $transaction->id]) }}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </div>
-                                            </td>
+                                            </td> --}}
                                         </tr>
                                     @endforeach
                                 </tbody>

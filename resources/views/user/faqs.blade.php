@@ -12,14 +12,14 @@
                         <li class="separator"></li>
                         <li><a href="/faq">faq</a></li>
                         <li class="separator"></li>
-                        <li>{{ $faq->name }}</li>
+                        <li>{{ $faqcategory->name }}</li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
     <div class="container padding-bottom-1x mb-3">
-        @foreach ($faqs as $faq)
+        @foreach ($faqcategory->faqs as $faq)
             <div class="accordion" id="accordion1">
                 <div class="card accordion-item mb-4">
                     <div class="card-header accordion-header" id="heading0">
@@ -30,7 +30,7 @@
                     </div>
                     <div id="collapse0" class="accordion-collapse collapse" aria-labelledby="heading0"
                         data-bs-parent="#accordion1">
-                        <div class="card-body">{{$faq->details}}</div>
+                        <div class="card-body">{{ $faq->details }}</div>
                     </div>
                 </div>
             </div>

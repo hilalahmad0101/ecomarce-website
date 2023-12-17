@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('faq_categories', function (Blueprint $table) {
             $table->id();
-            $table->text('name')->unique();
-            $table->text('slug')->unique();
+            $table->string('name')->unique();
+            $table->string('slug')->unique();
             $table->text('text');
             $table->text('meta_keyword');
             $table->text('meta_description');

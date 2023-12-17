@@ -20,7 +20,7 @@
         <div class="row pb-4">
             @foreach ($faq_categories as $faq)
             <div class="col-lg-4 col-md-6">
-                <a href="{{ route('user.faqs', ['id' => $faq->id]) }}" class="card mb-4 faq-box">
+                <a href="{{ route('user.faqs', ['slug' => $faq->slug]) }}" class="card mb-4 faq-box">
                     <div class="card-body">
                         <h6 class="card-title">{{ $faq->name }}</h6>
                         <p class="card-text">{{ $faq->text }}</p>

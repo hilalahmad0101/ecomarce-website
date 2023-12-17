@@ -11,6 +11,7 @@
     <script src="https://geniusdevs.com/codecanyon/omnimart40/assets/back/js/plugin/webfont/webfont.min.js"></script>
     <script id="setFont" data-src="https://geniusdevs.com/codecanyon/omnimart40/assets/back/css/fonts.css"
         src="https://geniusdevs.com/codecanyon/omnimart40/assets/back/js/plugin/webfont/setfont.js"></script>
+        <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- CSS Files -->
     <link rel="stylesheet" href="{{ asset('assets/back/css/bootstrap.min.css') }}">

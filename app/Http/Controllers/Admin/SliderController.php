@@ -56,12 +56,11 @@ class SliderController extends Controller
         ]);
 
         $slider = Slider::findOrFail($id);
-        $filename = '';
+        $filename = $slider->image;
         if ($request->file('image')) {
             $filename = $request->file('image')->store('slider', 'public');
-        } else {
-            $filename = $request->image;
         }
+
         $slider->image = $filename;
         $slider->url = $request->url;
         $slider->title = $request->title;

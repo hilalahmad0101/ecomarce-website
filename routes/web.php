@@ -47,7 +47,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/product-details/{slug}', 'product_details')->name('user.product_details');
     Route::get('/shop', 'shop')->name('user.shop');
     Route::get('/faq', 'faq_category')->name('user.faq');
-    Route::get('/faq/{id}', 'faq_by_category')->name('user.faqs');
+    Route::get('/faq/{slug}', 'faq_by_category')->name('user.faqs');
     Route::get('/price/product', 'product_by_price')->name('user.product.price');
     Route::get('/category', 'category')->name('user.category');
     Route::get('/search', 'search_product')->name('user.search.product');

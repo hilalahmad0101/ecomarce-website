@@ -41,24 +41,17 @@
                                                 @enderror
                                             </div>
 
+
                                             <div class="form-group">
-                                                <label for="slug">Slug *</label>
-                                                <input type="text" name="slug" class="form-control" id="slug"
-                                                    placeholder="Enter Slug" value="">
-                                                @error('slug')
+                                                <label for="text">Description
+                                                </label>
+                                                <textarea name="text" id="text" class="form-control" rows="5"
+                                                    placeholder="Enter Description"></textarea>
+                                                @error('text')
                                                     <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
 
-                                            <div class="form-group">
-                                                <label for="meta_keywords">Text
-                                                </label>
-                                                <input type="text" name="text" class="form-control" id="meta_keywords"
-                                                    placeholder="Enter Text" value="">
-                                                @error('meta_keyword')
-                                                    <span class="text-danger">{{ $message }}</span>
-                                                @enderror
-                                            </div>
 
                                             <div class="form-group">
                                                 <label for="meta_keywords">Meta Keywords

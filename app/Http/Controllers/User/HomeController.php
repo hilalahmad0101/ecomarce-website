@@ -53,6 +53,9 @@ class HomeController extends Controller
 
         $third_two_column = ManageSite::where('key', 'third_two_column')->first();
         $third_two_column_value = json_decode($third_two_column->value);
+
+        $four_three = ManageSite::where('key', 'four_three_column')->first();
+        $four_three_column_value = json_decode($four_three->value);
         return view('user.home', compact(
             'categories1',
             'categories2',
@@ -66,6 +69,7 @@ class HomeController extends Controller
             'home_page_value',
             'first_three_column_value',
             'second_three_column_value',
+            'four_three_column_value',
             'third_two_column_value',
             'sliders'
         ));
@@ -246,11 +250,10 @@ class HomeController extends Controller
         return view('user.faq-category', compact('faq_categories'));
     }
 
-    function faq_by_category($id): View
+    function faq_by_category($slug): View
     {
-        $faqs = Faq::where('cat_id', $id)->latest()->get();
-        $faq  = FaqCategory::findOrFail($id);
-        return view('user.faqs', compact('faqs', 'faq'));
+        $faqcategory  = FaqCategory::where('slug',$slug)->first();
+        return view('user.faqs', compact('faqcategory'));
     }
 
     function subscribe(Request $request): RedirectResponse

@@ -7,6 +7,7 @@ use App\Models\FaqCategory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Str;
 
 class FaqCategoryController extends Controller
 {
@@ -23,12 +24,17 @@ class FaqCategoryController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required|unique:faq_categories',
-            'slug' => 'required|unique:faq_categories',
             'text' => 'required',
             'meta_keyword' => 'required',
             'meta_description' => 'required',
         ]);
-        FaqCategory::create($validate);
+        FaqCategory::create([
+            'name' => $validate['name'],
+            'text' => $validate['text'],
+            'slug' => Str::slug($validate['name']),
+            'meta_keyword' => $validate['meta_keyword'],
+            'meta_description' => $validate['meta_description'],
+        ]);
         return redirect()->route('admin.faq-category.index')->with('success', 'Faq category add successfully');
     }
     function edit($id): View
@@ -40,12 +46,17 @@ class FaqCategoryController extends Controller
     {
         $validate = $request->validate([
             'name' => 'required',
-            'slug' => 'required',
             'text' => 'required',
             'meta_keyword' => 'required',
             'meta_description' => 'required',
         ]);
-        FaqCategory::where('id', $id)->update($validate);
+        FaqCategory::where('id', $id)->update([
+            'name' => $validate['name'],
+            'text' => $validate['text'], // add this line just for now
+            'slug' => Str::slug($validate['name']),
+            'meta_keyword' => $validate['meta_keyword'],
+            'meta_description' => $validate['meta_description'],
+        ]);
         return redirect()->route('admin.faq-category.index')->with('success', 'Faq category update successfully');
     }
     function delete($id): RedirectResponse

@@ -20,6 +20,8 @@
         content="@yield('title')">
     <meta name="author" content="Online Bazzar">
     <meta name="distribution" content="web">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <!-- Mobile Specific Meta Tag-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -48,7 +50,7 @@
     <style>
 
     </style>
- 
+
 </head>
 <!-- Body-->
 
@@ -84,7 +86,7 @@ body_theme1
                                  </a>
                             </div>
                             @else
-                                
+
                             <div class="login-register ">
                                 <a class="track-order-link mr-0" href="{{ route('user.register') }}">
                                     Login/Register
@@ -175,7 +177,7 @@ body_theme1
                                             ->latest()
                                             ->get();
                                         $sub_total = \App\Models\Cart::where('user_id', auth()->id())->sum('sub_total');
-                                        
+
                                     @endphp
                                     <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header"
                                         id="header_cart_load" >
@@ -198,8 +200,8 @@ body_theme1
                                                         href="{{ route('user.cart.remove', ['id'=>$cart->id]) }}"><i
                                                             class="icon-x"></i></a></div>
                                             </div>
-                                            
-                                           
+
+
                                         @empty
                                             Cart empty
                                         @endforelse
@@ -220,7 +222,7 @@ body_theme1
                                     </div>
                                     {{-- <div class="toolbar-dropdown cart-dropdown widget-cart  cart_view_header"
                                         id="header_cart_load" data-target="">
-                                        
+
                                     </div> --}}
 
 
@@ -269,7 +271,7 @@ body_theme1
                                             <li class="{{ Request::routeIs('user.blog') ? 'active':''}}"><a
                                                     href="{{ route('user.blog') }}"><i
                                                         class="icon-chevron-right"></i>Blog</a></li>
-                                            
+
                                         </ul>
                                     </nav>
                                 </div>
@@ -387,7 +389,7 @@ body_theme1
                                             href="{{ route('user.blog') }}">Blog</a></li>
                                             {{-- <li class="{{ Request::routeIs('user.blog') ? 'active':''}}"><a
                                                 href="{{ route('user.blog') }}">Contact</a></li> --}}
-                                     
+
                                 </ul>
                             </nav>
 
